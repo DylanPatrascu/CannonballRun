@@ -242,7 +242,7 @@ public class CarController : MonoBehaviour
 
     private void CalculateCarVelocity()
     {
-        currentCarLocalVelocity = transform.InverseTransformDirection(carRB.velocity);
+        currentCarLocalVelocity = transform.InverseTransformDirection(carRB.linearVelocity);
         carVelocityRatio = currentCarLocalVelocity.z / maxSpeed;
     }
     #endregion

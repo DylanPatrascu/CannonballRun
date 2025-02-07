@@ -1,4 +1,0 @@
-repository "CannonballRun@cl0sethew0rld@cloud"
-  path "/"
-    br "/main"
-    co "/main"

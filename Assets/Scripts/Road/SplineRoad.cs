@@ -13,7 +13,8 @@ public class SplineRoad : MonoBehaviour
 {
 
     [SerializeField] SplineSampler m_splineSampler;
-    [SerializeField] private int resolution;
+    [Range(1, 10000)][SerializeField] private int resolution;
+    [SerializeField] private float m_roadWidth = 20;
     [SerializeField] private MeshFilter m_meshFilter;
     [SerializeField] private MeshCollider m_meshCollider;
 
@@ -54,7 +55,7 @@ public class SplineRoad : MonoBehaviour
         for (int i = 0; i < resolution; i++)
         {
             float t = step * i;
-            m_splineSampler.SampleSplineWidth(t, out Vector3 p1, out Vector3 p2);
+            m_splineSampler.SampleSplineWidth(t, m_roadWidth, out Vector3 p1, out Vector3 p2);
             m_vertsP1.Add(p1);
             m_vertsP2.Add(p2);
         }

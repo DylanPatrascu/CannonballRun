@@ -11,7 +11,6 @@ public class SplineSampler : MonoBehaviour
 {
 
     [SerializeField] private SplineContainer m_splineContainer;
-    [SerializeField] private int m_width;
 
     private int m_splineIndex;
     private float3 position;
@@ -25,7 +24,7 @@ public class SplineSampler : MonoBehaviour
         SplineSamplerValidate?.Invoke();
     }
 
-    internal void SampleSplineWidth(float t, out Vector3 p1, out Vector3 p2)
+    internal void SampleSplineWidth(float t, float width, out Vector3 p1, out Vector3 p2)
     {
         m_splineContainer.Evaluate(m_splineIndex, t, out position, out forward, out upVector);
 
@@ -33,8 +32,8 @@ public class SplineSampler : MonoBehaviour
 
         float3 right = Vector3.Cross(forward, upVector).normalized;
 
-        p1 = position + (right * m_width);
-        p2 = position + (-right * m_width);
+        p1 = position + (right * width);
+        p2 = position + (-right * width);
     }
 
     internal void SampleSplineWidth(float t, out Vector3 position)

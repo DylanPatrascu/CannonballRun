@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Cool Gun
   description: This gun is PRETTY cool.
+  flavour: It's not safe to leave home without one.
   value: 100
   type: 2
   icon: {fileID: 2800000, guid: 637d3ec4fa945f64ba2111cfc5325e07, type: 3}

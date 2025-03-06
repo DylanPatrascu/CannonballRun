@@ -11,7 +11,7 @@ public class RainScript : MonoBehaviour
     {
         RandomInt = Random.Range(0, 20);
 
-        print("RainNum=" + RandomInt + "\n");
+        print(RandomInt + "\n");
 
         if (RandomInt < 10)
         {

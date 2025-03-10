@@ -9,6 +9,7 @@ public class NextArea : MonoBehaviour
     public TextMeshProUGUI leftText;
     public TextMeshProUGUI rightText;
 
+
     void Start()
     {
         

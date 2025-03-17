@@ -59,7 +59,7 @@ public class EnemyDrone : Enemy
         Debug.Log("Enemy fired a shot!");
 
         Rigidbody playerRb = player.GetComponent<Rigidbody>(); 
-        Vector3 playerVelocity = playerRb != null ? playerRb.velocity : Vector3.zero; 
+        Vector3 playerVelocity = playerRb != null ? playerRb.linearVelocity : Vector3.zero; 
 
         float distanceToPlayer = Vector3.Distance(firePoint.position, player.position);
         float timeToReach = distanceToPlayer / projectileSpeed; // This will estimate the time for projectile to reach the player
@@ -80,7 +80,7 @@ public class EnemyDrone : Enemy
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.velocity = aimDirection * projectileSpeed; 
+            rb.linearVelocity = aimDirection * projectileSpeed; 
         }
 
         Debug.Log("Shot fired successfully!");

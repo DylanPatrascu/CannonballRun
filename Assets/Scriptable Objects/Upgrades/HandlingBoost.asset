@@ -15,6 +15,7 @@ MonoBehaviour:
   upgradeName: Tires
   description: Upgrade your tires to have better grip.
   flavour: You will NOT get tired of tires.
+  cost: 20
   value: 100
   type: 1
   icon: {fileID: 2800000, guid: cd7b9ad754b4e5845a33c37334d01496, type: 3}

@@ -1,12 +1,9 @@
-//using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-//using Unity.Collections;
 using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
-//using UnityEngine.Splines;
 
 [ExecuteInEditMode]
 public class SplineRoad : MonoBehaviour
@@ -104,7 +101,9 @@ public class SplineRoad : MonoBehaviour
 
     public void Rebuild()
     {
+#if UNITY_EDITOR
         EditorApplication.delayCall -= Rebuild;
+#endif
         GetVerts();
         BuildMesh();
     }

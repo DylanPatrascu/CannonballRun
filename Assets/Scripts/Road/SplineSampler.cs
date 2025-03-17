@@ -1,8 +1,5 @@
 using System;
-using System.Security.Cryptography;
 using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Splines;
 

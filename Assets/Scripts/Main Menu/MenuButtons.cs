@@ -1,4 +1,5 @@
-using UnityEditor;
+using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,9 @@ public class MenuButtons : MonoBehaviour
 
     public void StartGame()
     {
+        StaticData.upgrades = new List<UpgradeData>();
+        StaticData.areas = new List<string>();
+        StaticData.scrap = 0;
         SceneManager.LoadScene("GameScene");
     }
 

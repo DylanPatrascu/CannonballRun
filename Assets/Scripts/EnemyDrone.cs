@@ -97,6 +97,7 @@ public class EnemyDrone : Enemy
     protected override void Die()
     {
         isDead = true;
+        StaticData.scrap += scrapReward;
         Debug.Log("Drone Exploded! Awarding " + scrapReward + " scrap!");
 
         // Destroy all bullets belonging to this enemy

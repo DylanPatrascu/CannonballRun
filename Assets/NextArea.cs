@@ -1,5 +1,4 @@
 using TMPro;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class NextArea : MonoBehaviour
@@ -15,14 +14,12 @@ public class NextArea : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (section == 1)
         {
-
-            leftText.SetText("< " + StaticData.areas[1]);
-            rightText.SetText(StaticData.areas[2] + " >");
+            leftText.SetText("< " + StaticData.areas[0]);
+            rightText.SetText(StaticData.areas[1] + " >");
         }
     }
 }

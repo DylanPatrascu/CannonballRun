@@ -8,4 +8,5 @@ public class StaticData : MonoBehaviour
     public static List<string> areas = new List<string>();
 
     public static int distanceTraveled;
+    public static int scrap = 0;
 }

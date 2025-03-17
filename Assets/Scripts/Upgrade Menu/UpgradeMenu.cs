@@ -25,6 +25,11 @@ public class UpgradeMenu : MonoBehaviour
     public Image upgradeIcon;
     [Range(0, 2)] public float menuSwapTime;
 
+    private enum Direction
+    {
+        up, down
+    };
+
     private Coroutine running;
 
     private void Start()
@@ -88,6 +93,8 @@ public class UpgradeMenu : MonoBehaviour
         if (running != null) { StopCoroutine(running); }
         StartCoroutine(SwapDescription(menuSwapTime, 540, -540, selectedUpgrades[button]));
 
+        //StartCoroutine(SwapSelected(1, Direction.down));
+
     }
 
     private IEnumerator SlideMenu(float time, int onScreen, int offScreen)
@@ -137,6 +144,19 @@ public class UpgradeMenu : MonoBehaviour
 
         descriptionBox.rectTransform.position = new Vector2(descriptionBox.rectTransform.position.x, onScreen);
 
+    }
+
+    private IEnumerator SwapSelected(int duration, Direction d)
+    {
+
+        int dirModifier = 1;
+        if (d == Direction.up) dirModifier *= -1;
+
+        foreach (Button button in buttons)
+        {
+            button.transform.SetSiblingIndex((button.transform.GetSiblingIndex() + dirModifier) % 3);
+            yield return null;
+        }
     }
 
 }

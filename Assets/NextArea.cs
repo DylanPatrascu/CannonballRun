@@ -12,45 +12,36 @@ public class NextArea : MonoBehaviour
 
     void Start()
     {
+        print("C Node = " + StaticData.currentNode);
+        print("C Section = " + StaticData.section);
+    }
+
+    void Update()
+    {
         if (StaticData.section == 1)
         {
-            print("C Node = " + StaticData.currentNode);
-            print("C Section = " + StaticData.section);
             ChooseLeft(StaticData.areas[StaticData.currentNode + StaticData.section]);
             leftText.SetText("< " + StaticData.areas[StaticData.currentNode + StaticData.section]);
 
             ChooseRight(StaticData.areas[StaticData.currentNode + StaticData.section + 1]);
             rightText.SetText(StaticData.areas[StaticData.currentNode + StaticData.section + 1] + " >");
-
-            StaticData.section = 2;
 
         }
         else if (StaticData.section == 2)
         {
-
-            print("C Node = " + StaticData.currentNode);
-            print("C Section = " + StaticData.section);
-
             ChooseLeft(StaticData.areas[StaticData.currentNode + StaticData.section]);
             leftText.SetText("< " + StaticData.areas[StaticData.currentNode + StaticData.section]);
 
             ChooseRight(StaticData.areas[StaticData.currentNode + StaticData.section + 1]);
             rightText.SetText(StaticData.areas[StaticData.currentNode + StaticData.section + 1] + " >");
-
-            StaticData.section = 3;
-
         }
         else if (StaticData.section == 3)
         {
-
             ChooseLeft(StaticData.areas[StaticData.currentNode + StaticData.section]);
             leftText.SetText("< " + StaticData.areas[StaticData.currentNode + StaticData.section]);
 
             ChooseRight(StaticData.areas[StaticData.currentNode + StaticData.section + 1]);
             rightText.SetText(StaticData.areas[StaticData.currentNode + StaticData.section + 1] + " >");
-
-            StaticData.section = 4;
-
         }
         else if (StaticData.section == 4)
         {
@@ -61,8 +52,6 @@ public class NextArea : MonoBehaviour
             ChooseRight(StaticData.areas[StaticData.currentNode + StaticData.section + 1]);
             rightText.SetText(StaticData.areas[StaticData.currentNode + StaticData.section + 1] + " >");
 
-            StaticData.section = 5;
-
         }
         else if (StaticData.section == 5)
         {
@@ -72,9 +61,6 @@ public class NextArea : MonoBehaviour
 
             ChooseRight(StaticData.areas[StaticData.currentNode + StaticData.section + 1]);
             rightText.SetText(StaticData.areas[StaticData.currentNode + StaticData.section + 1] + " >");
-
-            StaticData.section = 6;
-
         }
         else if (StaticData.section == 6)
         {
@@ -82,11 +68,6 @@ public class NextArea : MonoBehaviour
             print("win!!!");
 
         }
-    }
-
-    void Update()
-    {
-      
 
     }
 

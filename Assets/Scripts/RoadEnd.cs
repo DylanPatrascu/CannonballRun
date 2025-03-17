@@ -28,13 +28,11 @@ public class RoadEnd : MonoBehaviour
         // false = right, true = left
         if (dir)
         {
-            StaticData.currentNode = StaticData.currentNode + StaticData.section - 1;
-            print("Current Node = " +  StaticData.currentNode);
+            StaticData.currentNode = StaticData.currentNode + StaticData.section;
         }
         else
         {
-            StaticData.currentNode = StaticData.currentNode + StaticData.section + 1 - 1;
-            print("Current Node = " + StaticData.currentNode);
+            StaticData.currentNode = StaticData.currentNode + StaticData.section + 1;
         }
 
 
@@ -46,6 +44,8 @@ public class RoadEnd : MonoBehaviour
             else if (nextArea == areas.godShop) { StaticData.nextScene = godShopScene; }
             else if (nextArea == areas.gasStation) { StaticData.nextScene = gasStationScene; }
             else if (nextArea == areas.nextStage) { StaticData.nextScene = nextStageScene; }
+
+            StaticData.section += 1;
 
             UpdateScene("RoadEndScene");
         }

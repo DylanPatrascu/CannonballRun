@@ -11,6 +11,10 @@ public class MenuButtons : MonoBehaviour
         StaticData.upgrades = new List<UpgradeData>();
         StaticData.areas = new List<string>();
         StaticData.scrap = 0;
+        StaticData.totalTime = 0;
+        StaticData.timeDrifted = 0;
+        StaticData.distanceTraveled = 0;
+        StaticData.enemiesKilled = 0;
         SceneManager.LoadScene("GameScene");
     }
 

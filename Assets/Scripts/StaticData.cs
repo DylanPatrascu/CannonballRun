@@ -7,6 +7,12 @@ public class StaticData : MonoBehaviour
     public static List<UpgradeData> upgrades = new List<UpgradeData>();
     public static List<string> areas = new List<string>();
 
-    public static int distanceTraveled;
+    public static float totalTime = 0;
+    public static int distanceTraveled = 0;
+    public static float timeDrifted = 0;
     public static int scrap = 0;
+    public static int enemiesKilled = 0;
+    public static int section = 1;
+    public static int currentNode = 0;
+
 }

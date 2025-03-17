@@ -27,26 +27,27 @@ public class CarDeath : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-
-        
-
         if (location.position.y < -5)
         {
-            if (!dead)
-            {
-                dead = true;
-                print("dead");
-                explode.Play();
-            }
-            else
-            {
-                deathScreen.enabled = true;
-                blackScreen.color = Color.Lerp(alpha2,alpha,time/transitionTime);
-                time += Time.deltaTime;
-            }
+            TriggerDeath();
+        }
+        if (dead)
+        {
+            deathScreen.enabled = true;
+            blackScreen.color = Color.Lerp(alpha2, alpha, time / transitionTime);
+            time += Time.deltaTime;
+        }
+    }
+
+    public void TriggerDeath()
+    {
+        if (!dead)
+        {
+            dead = true;
+            Debug.Log("Car is dead!");
+            explode.Play();
         }
     }
 }

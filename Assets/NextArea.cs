@@ -56,11 +56,9 @@ public class NextArea : MonoBehaviour
         else if (StaticData.section == 5)
         {
 
-            ChooseLeft(StaticData.areas[StaticData.currentNode + StaticData.section]);
-            leftText.SetText("< " + StaticData.areas[StaticData.currentNode + StaticData.section]);
+            leftText.SetText("< Boss");
 
-            ChooseRight(StaticData.areas[StaticData.currentNode + StaticData.section + 1]);
-            rightText.SetText(StaticData.areas[StaticData.currentNode + StaticData.section + 1] + " >");
+            rightText.SetText("Boss >");
         }
         else if (StaticData.section == 6)
         {

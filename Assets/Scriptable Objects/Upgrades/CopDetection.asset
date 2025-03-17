@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Shows when cops are approaching
   flavour: When the supreme leader came into power, the cops become way more strict,
     and WAY more deadly.
+  cost: 100
   value: 0
   type: 3
   icon: {fileID: 2800000, guid: 48fdb8105c453e24bb8114b454c0703c, type: 3}

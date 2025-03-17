@@ -19,9 +19,11 @@ public class UpgradeMenu : MonoBehaviour
 
     public List<Button> buttons;
     public Image descriptionBox;
+    public TMP_Text scrapText;
     public TMP_Text upgradeName;
     public TMP_Text upgradeDescription;
     public TMP_Text upgradeFlavour;
+    public TMP_Text upgradeCost;
     public Image upgradeIcon;
     [Range(0, 2)] public float menuSwapTime;
 
@@ -34,6 +36,7 @@ public class UpgradeMenu : MonoBehaviour
 
     private void Start()
     {
+        scrapText.text = StaticData.scrap.ToString();
         selectedUpgrades = SelectUpgrades();
         PopulateMenu();
         running = StartCoroutine(SlideMenu(menuSwapTime, 540, -540));
@@ -69,10 +72,17 @@ public class UpgradeMenu : MonoBehaviour
 
     public void UpgradeSubmit(int button)
     {
-        Debug.Log(button);
-        for (int i = 0; i < selectedUpgrades.Count; i++) Debug.Log(selectedUpgrades[i]);
-        Debug.Log(selectedUpgrades[button]);
-        AddUpgrade(selectedUpgrades[button]);
+        if (StaticData.scrap - selectedUpgrades[button].cost >= 0)
+        {
+            StaticData.scrap -= selectedUpgrades[button].cost;
+            AddUpgrade(selectedUpgrades[button]);
+            SceneManager.LoadScene("GameScene");
+        }
+        
+    }
+
+    public void SkipShop()
+    {
         SceneManager.LoadScene("GameScene");
     }
 
@@ -93,7 +103,6 @@ public class UpgradeMenu : MonoBehaviour
         if (running != null) { StopCoroutine(running); }
         StartCoroutine(SwapDescription(menuSwapTime, 540, -540, selectedUpgrades[button]));
 
-        //StartCoroutine(SwapSelected(1, Direction.down));
 
     }
 
@@ -127,6 +136,7 @@ public class UpgradeMenu : MonoBehaviour
         upgradeName.text = upgrade.upgradeName;
         upgradeDescription.text = upgrade.description;
         upgradeFlavour.text = upgrade.flavour;
+        upgradeCost.text = upgrade.cost.ToString();
         upgradeIcon.sprite = Sprite.Create(
                 upgrade.icon,
                 new Rect(0, 0, upgrade.icon.width, upgrade.icon.height),

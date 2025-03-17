@@ -6,5 +6,7 @@ public class StaticData : MonoBehaviour
     public static string nextScene = "GameScene";
     public static List<UpgradeData> upgrades = new List<UpgradeData>();
     public static List<string> areas = new List<string>();
+
+    public static int distanceTraveled;
     public static int scrap = 0;
 }

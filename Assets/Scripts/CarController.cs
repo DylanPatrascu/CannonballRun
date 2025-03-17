@@ -18,6 +18,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private TrailRenderer[] skidMarks = new TrailRenderer[2];
     [SerializeField] private ParticleSystem[] skidSmokes = new ParticleSystem[2];
     [SerializeField] private AudioSource engineSound, skidSound;
+    [SerializeField] private CarDeath carDied;
 
 
     [Header("Suspension Settings")]
@@ -76,7 +77,10 @@ public class CarController : MonoBehaviour
     }
     private void Update()
     {
-        GetPlayerInput();
+        if (!carDied.dead)
+        {
+            GetPlayerInput();
+        }
     }
     #endregion
 

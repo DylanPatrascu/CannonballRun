@@ -5,7 +5,7 @@ public class CarDeath : MonoBehaviour
 {
 
     public Transform location;
-    bool dead = false;
+    public bool dead = false;
 
     public Canvas deathScreen;
     public Image blackScreen;
@@ -27,7 +27,7 @@ public class CarDeath : MonoBehaviour
 
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (location.position.y < -5)
         {

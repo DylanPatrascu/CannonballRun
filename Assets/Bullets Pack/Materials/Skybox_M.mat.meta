@@ -2,6 +2,7 @@ fileFormatVersion: 2
 guid: fa1f837b96f20cf4a8d8b216d124637a
 NativeFormatImporter:
   externalObjects: {}
+<<<<<<< Updated upstream
   mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
@@ -13,3 +14,9 @@ AssetOrigin:
   packageVersion: 0.0.1
   assetPath: Assets/DuNguyn/Bullets Pack/Materials/Skybox_M.mat
   uploadId: 716450
+=======
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> Stashed changes

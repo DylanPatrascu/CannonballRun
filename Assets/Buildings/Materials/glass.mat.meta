@@ -1,5 +1,6 @@
 fileFormatVersion: 2
 guid: 82e4dc237080ba14b854c6d88ca26ae8
+<<<<<<< Updated upstream
 timeCreated: 1468141762
 licenseType: Store
 NativeFormatImporter:
@@ -13,3 +14,11 @@ AssetOrigin:
   packageVersion: 1.0
   assetPath: Assets/Buildings/Materials/glass.mat
   uploadId: 126511
+=======
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> Stashed changes

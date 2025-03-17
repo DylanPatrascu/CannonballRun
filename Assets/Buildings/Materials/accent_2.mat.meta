@@ -1,5 +1,6 @@
 fileFormatVersion: 2
 guid: cb1813432d67217438c93436eb503c48
+<<<<<<< Updated upstream
 timeCreated: 1468141762
 licenseType: Store
 NativeFormatImporter:
@@ -13,3 +14,11 @@ AssetOrigin:
   packageVersion: 1.0
   assetPath: Assets/Buildings/Materials/accent_2.mat
   uploadId: 126511
+=======
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> Stashed changes

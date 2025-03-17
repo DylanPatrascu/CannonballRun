@@ -1,5 +1,6 @@
 fileFormatVersion: 2
 guid: e6ce352c03cf91145a7e1e78b2126fd9
+<<<<<<< Updated upstream
 timeCreated: 1462459304
 licenseType: Store
 NativeFormatImporter:
@@ -13,3 +14,11 @@ AssetOrigin:
   packageVersion: 1.0
   assetPath: Assets/Sci Fi Assets/Simple SciFi Gun Turret Set/Materials/Turret 1b.mat
   uploadId: 227306
+=======
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> Stashed changes

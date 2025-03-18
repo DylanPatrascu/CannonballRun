@@ -147,7 +147,10 @@ public class UpgradeMenu : MonoBehaviour
 
         while (t < halftime)
         {
-            descriptionBox.rectTransform.position = new Vector2(descriptionBox.rectTransform.position.x, Mathf.Lerp(offScreen, onScreen, t / halftime));
+            descriptionBox.rectTransform.position = new Vector2(
+                descriptionBox.rectTransform.position.x, 
+                Mathf.Lerp(offScreen, onScreen, t / halftime)
+            );
             t += Time.deltaTime;
             yield return null;
         }

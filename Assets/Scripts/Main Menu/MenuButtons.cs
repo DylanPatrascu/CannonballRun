@@ -10,7 +10,7 @@ public class MenuButtons : MonoBehaviour
     {
         StaticData.upgrades = new List<UpgradeData>();
         StaticData.areas = new List<string>();
-        StaticData.scrap = 0;
+        StaticData.scrap = 200;
         StaticData.totalTime = 0;
         StaticData.timeDrifted = 0;
         StaticData.distanceTraveled = 0;

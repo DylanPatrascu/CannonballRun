@@ -39,10 +39,10 @@ public class CarController : MonoBehaviour
     private float steerInput = 0;
 
     [Header("Car Settings")]
-    [SerializeField] private float acceleration = 25f;
-    [SerializeField] private float maxSpeed = 100f;
-    [SerializeField] private float deceleration = 10f;
-    [SerializeField] private float steerStrength = 15f;
+    [SerializeField] public float acceleration = 25f;
+    [SerializeField] public float maxSpeed = 100f;
+    [SerializeField] public float deceleration = 10f;
+    [SerializeField] public float steerStrength = 15f;
     [SerializeField] private AnimationCurve turningCurve;
     [SerializeField] private float dragCoeffecient = 1f;
 

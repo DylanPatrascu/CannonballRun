@@ -57,8 +57,10 @@ public class NextArea : MonoBehaviour
         {
 
             leftText.SetText("< Boss");
+            leftEnd.nextArea = RoadEnd.areas.boss;
 
             rightText.SetText("Boss >");
+            rightEnd.nextArea = RoadEnd.areas.boss;
         }
         else if (StaticData.section == 6)
         {

@@ -19,7 +19,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private ParticleSystem[] skidSmokes = new ParticleSystem[2];
     [SerializeField] private AudioSource engineSound, skidSound;
     [SerializeField] private CarDeath carDied;
-
+    [SerializeField] private float time = 0;
 
     [Header("Suspension Settings")]
     [SerializeField] private float springStiffness;
@@ -74,6 +74,8 @@ public class CarController : MonoBehaviour
         Movement();
         Visuals();
         EngineSound();
+        StaticData.totalTime = time;
+        time += Time.fixedDeltaTime;
     }
     private void Update()
     {
@@ -150,6 +152,7 @@ public class CarController : MonoBehaviour
             ToggleSkidMarks(true);
             ToggleSkidSmokes(true);
             ToggleSkidSound(true);
+            StaticData.timeDrifted += Time.fixedDeltaTime;
         }
         else
         {

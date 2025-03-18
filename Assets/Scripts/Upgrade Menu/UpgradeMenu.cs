@@ -76,14 +76,14 @@ public class UpgradeMenu : MonoBehaviour
         {
             StaticData.scrap -= selectedUpgrades[button].cost;
             AddUpgrade(selectedUpgrades[button]);
-            SceneManager.LoadScene("GameScene");
+            SceneManager.LoadScene("AfterGarage");
         }
         
     }
 
     public void SkipShop()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("AfterGarage");
     }
 
     public void ButtonSelected(int button)

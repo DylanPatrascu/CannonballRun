@@ -20,7 +20,7 @@ public class TreeGenerator : MonoBehaviour
             while (y > 0)
             {
                 RandomInt = Random.Range(1, 100);
-
+    
                 if (x == 1)
                 {
                     StaticData.areas.Add("road");

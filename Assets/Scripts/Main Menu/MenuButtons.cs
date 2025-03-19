@@ -15,6 +15,8 @@ public class MenuButtons : MonoBehaviour
         StaticData.timeDrifted = 0;
         StaticData.distanceTraveled = 0;
         StaticData.enemiesKilled = 0;
+        StaticData.section = 1;
+        StaticData.currentNode = 0;
         SceneManager.LoadScene("GameScene");
     }
 

@@ -32,7 +32,7 @@ public class AfterGarage : MonoBehaviour
             SceneManager.LoadScene("BossScene");
         }
 
-        if (StaticData.areas[StaticData.currentNode + StaticData.section].Equals("shop"))
+        if (StaticData.areas[StaticData.currentNode + StaticData.section].Equals("road"))
         {
             StaticData.currentNode = StaticData.currentNode + StaticData.section;
             StaticData.section += 1;
@@ -58,7 +58,7 @@ public class AfterGarage : MonoBehaviour
             SceneManager.LoadScene("BossScene");
         }
 
-        if (StaticData.areas[StaticData.currentNode + StaticData.section +1 ].Equals("shop"))
+        if (StaticData.areas[StaticData.currentNode + StaticData.section +1 ].Equals("road"))
         {
             StaticData.currentNode = StaticData.currentNode + StaticData.section + 1;
             StaticData.section += 1;

@@ -8,11 +8,18 @@ public class TreeGenerator : MonoBehaviour
     int x = 1;
     int y = 1;
 
-    public List<string> areas = StaticData.areas;
-
     void Start()
     {
+        if (!StaticData.treeGen)
+        {
+            GenerateTree();
+        }
+        
+    }
 
+    public void GenerateTree()
+    {
+        StaticData.treeGen = true;
         for (int i = 0; i < 5; i++)
         {
             y = x;

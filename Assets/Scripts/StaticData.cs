@@ -15,4 +15,6 @@ public class StaticData : MonoBehaviour
     public static int section = 1;
     public static int currentNode = 0;
 
+    public static bool treeGen = false;
+
 }

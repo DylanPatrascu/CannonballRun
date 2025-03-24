@@ -18,6 +18,7 @@ public class MenuButtons : MonoBehaviour
         StaticData.section = 1;
         StaticData.currentNode = 0;
         StaticData.treeGen = false;
+        StaticData.alive = true;
         SceneManager.LoadScene("GameScene");
 
     }

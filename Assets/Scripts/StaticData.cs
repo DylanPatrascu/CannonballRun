@@ -16,5 +16,6 @@ public class StaticData : MonoBehaviour
     public static int currentNode = 0;
 
     public static bool treeGen = false;
+    public static bool alive = true;
 
 }

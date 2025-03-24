@@ -8,11 +8,18 @@ public class StatMenu : MonoBehaviour
 
     void Start()
     {
-        text.SetText("Time = " + StaticData.totalTime.ToString("00.00") + "\n" + "Time Drifting = " + StaticData.timeDrifted.ToString("00.00"));
+        text.SetText("Time\n" + StaticData.totalTime.ToString("00.00") + "\n" + "Time Drifting\n" + StaticData.timeDrifted.ToString("00.00"));
     }
     public void NextScene()
     {
-        SceneManager.LoadScene(StaticData.nextScene);
+        if (StaticData.alive)
+        {
+            SceneManager.LoadScene(StaticData.nextScene);
+        }
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
 }

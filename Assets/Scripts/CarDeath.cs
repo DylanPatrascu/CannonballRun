@@ -12,7 +12,7 @@ public class CarDeath : MonoBehaviour
     private Color alpha;
     private Color alpha2;
     private float time = 0;
-    public float transitionTime = 5;
+    private float transitionTime = 2;
 
     public ParticleSystem explode;
 
@@ -27,7 +27,7 @@ public class CarDeath : MonoBehaviour
 
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (location.position.y < -5)
         {
@@ -46,6 +46,7 @@ public class CarDeath : MonoBehaviour
         if (!dead)
         {
             dead = true;
+            StaticData.alive = false;
             Debug.Log("Car is dead!");
             explode.Play();
         }

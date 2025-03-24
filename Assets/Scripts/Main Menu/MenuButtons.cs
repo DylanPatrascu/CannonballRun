@@ -17,7 +17,9 @@ public class MenuButtons : MonoBehaviour
         StaticData.enemiesKilled = 0;
         StaticData.section = 1;
         StaticData.currentNode = 0;
+        StaticData.treeGen = false;
         SceneManager.LoadScene("GameScene");
+
     }
 
     public void OpenCollection()

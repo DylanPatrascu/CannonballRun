@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using NUnit.Framework.Internal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TreeGenerator : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class TreeGenerator : MonoBehaviour
 
     void Start()
     {
-        if (!StaticData.treeGen)
+        if (!StaticData.treeGen && !SceneManager.GetActiveScene().name.Equals("MainMenu"))
         {
             GenerateTree();
         }
@@ -19,6 +20,7 @@ public class TreeGenerator : MonoBehaviour
 
     public void GenerateTree()
     {
+        print("tree made");
         StaticData.treeGen = true;
         for (int i = 0; i < 5; i++)
         {

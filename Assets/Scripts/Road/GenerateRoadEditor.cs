@@ -12,11 +12,13 @@ public class GenerateRoadEditor : Editor
 
         GenerateRoad generateRoad = (GenerateRoad)target;
 
+        GUI.enabled = (generateRoad.randomizeEnabled());
         if (GUILayout.Button("Rebuild Road"))
         {
             generateRoad.Rebuild();
             SceneView.RepaintAll();
         }
+        GUI.enabled = true;
 
     }
 }

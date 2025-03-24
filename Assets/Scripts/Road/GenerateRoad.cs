@@ -15,13 +15,15 @@ public class GenerateRoad : MonoBehaviour
     
     [SerializeField] private int m_knots;
 
+    [SerializeField] private bool m_randomize;
+
     private float m_distance;
     private float m_knotDistance;
     private Spline m_road;
 
     private void OnValidate()
     {
-        Rebuild();
+        if (m_randomize) Rebuild();
     }
 
     public void Rebuild()
@@ -35,7 +37,7 @@ public class GenerateRoad : MonoBehaviour
 
     public void RebuildSpline()
     {
-
+        
         if (m_splineContainer.Spline != null)
         {
             m_splineContainer.Spline.Clear();
@@ -81,6 +83,9 @@ public class GenerateRoad : MonoBehaviour
         m_splineContainer.Spline = m_road;
     }
 
-    
+    public bool randomizeEnabled()
+    {
+        return m_randomize;
+    }
 
 }

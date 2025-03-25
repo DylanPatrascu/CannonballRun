@@ -40,7 +40,7 @@ public class Cowcatcher : MonoBehaviour
             }
         }
 
-        else
+        else if (level == 3 && other.CompareTag("Enemy"))
         {
             Destroy(other.gameObject);
             explode.Play();

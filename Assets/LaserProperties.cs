@@ -9,14 +9,14 @@ public class LaserProperties : MonoBehaviour
         if (dangerous)
         {
             if (other.CompareTag("Player"))
-                    {
-                        PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-                        if (playerHealth != null)
-                        {
-                            playerHealth.TakeDamage(5);
-                        }
-                    }
+            {
+                PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamage(5);
                 }
+            }
         }
+    }
         
 }

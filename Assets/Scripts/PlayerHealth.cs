@@ -9,10 +9,14 @@ public class PlayerHealth : MonoBehaviour
 
     private CarDeath carDeath;
 
+    public delegate void OnHealthChanged(float newHealth);
+    public event OnHealthChanged onHealthChanged;
+
     void Start()
     {
         currentHealth = maxHealth;
         carDeath = GetComponent<CarDeath>(); //  CarDeath.cs should be on the same object
+        onHealthChanged?.Invoke(currentHealth);
     }
 
     public void TakeDamage(float damageAmount)
@@ -21,6 +25,7 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth -= damageAmount;
         Debug.Log("Player took " + damageAmount + " of damage. Current health: " + currentHealth);
+        onHealthChanged?.Invoke(currentHealth);
 
         if (currentHealth <= 0)
         {
@@ -36,7 +41,8 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Player is dead! Triggering CarDeath...");
             carDeath?.TriggerDeath();
         }
-
     }
+
     public float GetHealth() => currentHealth;
+    public float GetMaxHealth() => maxHealth;
 }

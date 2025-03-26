@@ -144,15 +144,27 @@ public class Turret3 : MonoBehaviour
     {
         var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
+        // Try to hit something with your ground mask.
         if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, groundMask))
         {
             return (true, hitInfo.point);
         }
         else
         {
-            return (false, Vector3.zero);
+            // Create a horizontal plane at the turret's (aimedTransform's) height.
+            Plane horizontalPlane = new Plane(Vector3.up, new Vector3(0, aimedTransform.position.y, 0));
+            if (horizontalPlane.Raycast(ray, out float distance))
+            {
+                // Get the point along the ray that intersects the plane.
+                return (true, ray.GetPoint(distance));
+            }
+            else
+            {
+                return (false, Vector3.zero);
+            }
         }
     }
+
 
     private void Shoot()
     {

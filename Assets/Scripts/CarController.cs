@@ -319,7 +319,6 @@ public class CarController : MonoBehaviour
         Debug.Log("Movement disabled for " + duration + " seconds.");
 
         if (empEffectPrefab != null && activeEmpEffect == null) {
-
             Vector3 spawnPosition = transform.position + new Vector3(0f, 1f, 0f); 
             activeEmpEffect = Instantiate(empEffectPrefab, spawnPosition, Quaternion.identity);
 

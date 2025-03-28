@@ -14,6 +14,7 @@ public class StaticData : MonoBehaviour
     public static int enemiesKilled = 0;
     public static int section = 1;
     public static int currentNode = 0;
+    public static float runTime = 0;
 
     public static bool treeGen = false;
     public static bool alive = true;

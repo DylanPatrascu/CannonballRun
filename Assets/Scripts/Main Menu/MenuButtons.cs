@@ -20,7 +20,7 @@ public class MenuButtons : MonoBehaviour
         StaticData.treeGen = false;
         StaticData.alive = true;
         SceneManager.LoadScene("GameScene");
-
+        StaticData.runTime = 0;
     }
 
     public void OpenCollection()

@@ -1,4 +1,6 @@
+using System.Diagnostics.Tracing;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossHealth : MonoBehaviour
 {
@@ -6,9 +8,23 @@ public class BossHealth : MonoBehaviour
     private float currentHealth;
     private bool isDead = false;
 
+    public ParticleSystem explosion;
+    private float timer = 0;
+
     void Start()
     {
         currentHealth = maxHealth;
+    }
+
+    private void FixedUpdate()
+    {
+        if (isDead)
+        {
+            timer += Time.fixedDeltaTime;
+            if (timer > 1){
+                SceneManager.LoadScene("WinScene");
+            }
+        }
     }
 
     public void TakeDamage(float damageAmount)
@@ -30,6 +46,7 @@ public class BossHealth : MonoBehaviour
         {
             isDead = true;
             Debug.Log("Boss is dead");
+            explosion.Play();
         }
 
     }

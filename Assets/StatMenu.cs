@@ -8,6 +8,7 @@ public class StatMenu : MonoBehaviour
 
     void Start()
     {
+        StaticData.runTime += StaticData.totalTime;
         text.SetText("Time\n" + StaticData.totalTime.ToString("00.00") + "\n" + "Time Drifting\n" + StaticData.timeDrifted.ToString("00.00"));
     }
     public void NextScene()

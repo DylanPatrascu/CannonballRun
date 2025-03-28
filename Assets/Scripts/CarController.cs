@@ -37,6 +37,8 @@ public class CarController : MonoBehaviour
     [Header("Input")]
     private float moveInput = 0;
     private float steerInput = 0;
+    private bool isMovementDisabled = false;
+    private float movementDisableTimer = 0f;
 
     [Header("Car Settings")]
     [SerializeField] public float acceleration = 25f;
@@ -50,6 +52,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private float tireRotationSpeed = 3000f;
     [SerializeField] private float maxSteeringAngle = 30f;
     [SerializeField] private float minSideSkidVelocity = 10f;
+    [SerializeField] private GameObject empEffectPrefab;
 
     [Header("Audio")]
     [SerializeField][RangeAttribute(0,1)] private float minPitch = 1f;
@@ -59,6 +62,7 @@ public class CarController : MonoBehaviour
 
     private Vector3 currentCarLocalVelocity = Vector3.zero;
     private float carVelocityRatio = 0;
+    private GameObject activeEmpEffect;
 
     #region Unity Functions
     private void Start()
@@ -81,7 +85,18 @@ public class CarController : MonoBehaviour
     {
         if (!carDied.dead)
         {
-            GetPlayerInput();
+            if (isMovementDisabled) {
+                movementDisableTimer -= Time.deltaTime;
+                if (movementDisableTimer <= 0f) {
+                    isMovementDisabled = false;
+                    if (activeEmpEffect != null) {
+                        Destroy(activeEmpEffect);
+                        activeEmpEffect = null;
+                    }
+                }
+            } else {
+                GetPlayerInput();
+            }
         }
     }
     #endregion
@@ -295,4 +310,19 @@ public class CarController : MonoBehaviour
         }
     }
     #endregion
+
+    public void DisableMovement(float duration) {
+        isMovementDisabled = true;
+        movementDisableTimer = duration;
+        moveInput = 0f;
+        steerInput = 0f;
+        Debug.Log("Movement disabled for " + duration + " seconds.");
+
+        if (empEffectPrefab != null && activeEmpEffect == null) {
+            Vector3 spawnPosition = transform.position + new Vector3(0f, 1f, 0f); 
+            activeEmpEffect = Instantiate(empEffectPrefab, spawnPosition, Quaternion.identity);
+
+            activeEmpEffect.transform.SetParent(transform);
+        }
+    }
 }

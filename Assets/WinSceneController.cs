@@ -9,7 +9,7 @@ public class WinSceneController : MonoBehaviour
     void Start()
     {
         StaticData.runTime += StaticData.totalTime;
-        text.SetText("Time\n" + StaticData.runTime.ToString("00.00"));
+        text.SetText("Total Run Time\n" + "     " + StaticData.runTime.ToString("00.00"));
     }
 
     public void goMenu()

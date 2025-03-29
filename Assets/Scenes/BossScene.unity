@@ -576,11 +576,11 @@ PrefabInstance:
     - target: {fileID: 64947840293678046, guid: 91f6a3fbd3bd7734ca126b434f3b94bc, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1730869163}
+      objectReference: {fileID: 1699008240}
     - target: {fileID: 4618492715417715497, guid: 91f6a3fbd3bd7734ca126b434f3b94bc, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1730869163}
+      objectReference: {fileID: 1699008240}
     - target: {fileID: 5976724744812825929, guid: 91f6a3fbd3bd7734ca126b434f3b94bc, type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.size
       value: 5
@@ -1721,7 +1721,6 @@ GameObject:
   - component: {fileID: 1477925180}
   - component: {fileID: 1477925179}
   - component: {fileID: 1477925178}
-  - component: {fileID: 1477925176}
   - component: {fileID: 1477925175}
   - component: {fileID: 1477925181}
   - component: {fileID: 1477925182}
@@ -1744,7 +1743,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 0
+  m_Speed: 60
   m_Acceleration: 25
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1756,18 +1755,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1477925176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1477925174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a731ac2f78956924cad213af485451dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &1477925178
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1967,7 +1954,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e828d8a88518d9749bd86c230fd005ab, type: 3}
---- !u!43 &1730869163
+--- !u!43 &1699008240
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

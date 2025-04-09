@@ -319,10 +319,16 @@ public class CarController : MonoBehaviour
         Debug.Log("Movement disabled for " + duration + " seconds.");
 
         if (empEffectPrefab != null && activeEmpEffect == null) {
-            Vector3 spawnPosition = transform.position + new Vector3(0f, 1f, 0f); 
+            Vector3 spawnPosition = transform.position + Vector3.up * 1f;
             activeEmpEffect = Instantiate(empEffectPrefab, spawnPosition, Quaternion.identity);
 
             activeEmpEffect.transform.SetParent(transform);
+
+            activeEmpEffect.transform.localPosition = new Vector3(0f, 1f, 0f);
+
+            Debug.Log("Car position: " + transform.position);
+            Debug.Log("Spawn position: " + spawnPosition);
+            Debug.Log("Effect actual position: " + activeEmpEffect.transform.position);
         }
     }
 }

@@ -4,15 +4,6 @@ using UnityEngine.Rendering;
 public class EnemyDrone : Enemy
 {
 
-    [Header("Drone Specifics")]
-    [SerializeField] private Transform player; 
-    [SerializeField] private float moveSpeed = 5f;
-    
-    [SerializeField] private float detectionRange = 15f;
-    
-    [SerializeField] private float followDistance = 10f; 
-    [SerializeField] private float followHeight = 5f;
-
     [Header("Shooting Settings")]
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
@@ -21,8 +12,9 @@ public class EnemyDrone : Enemy
 
     private float fireTimer = 0f;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         if (player == null)
         {
             GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -33,14 +25,11 @@ public class EnemyDrone : Enemy
         }
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         if (player == null) return;
 
-        Vector3 targetPosition = player.position + (player.forward * followDistance);
-        targetPosition.y = followHeight;
-
-        transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
 
         // This is the shooting timer
         fireTimer += Time.deltaTime;
@@ -101,7 +90,7 @@ public class EnemyDrone : Enemy
         Debug.Log("Drone Exploded! Awarding " + scrapReward + " scrap!");
 
         // Destroy all bullets belonging to this enemy
-        EnemyProjectile[] allProjectiles = FindObjectsOfType<EnemyProjectile>();
+        EnemyProjectile[] allProjectiles = FindObjectsByType<EnemyProjectile>(FindObjectsSortMode.None);
         foreach (EnemyProjectile projectile in allProjectiles)
         {
             if (projectile != null)

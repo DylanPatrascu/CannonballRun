@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float attackSpeed = 1f;
     [SerializeField] protected int scrapReward = 10;
     [SerializeField] public Transform player;
-    [SerializeField] private bool shouldLookAtPlayer = true;
+    [SerializeField] protected bool shouldLookAtPlayer = true;
     [SerializeField] protected float moveSpeed = 4f;
     [SerializeField] public float spawnDistance = 10f;
     [SerializeField] private Vector3 lookAtRotationOffset = new Vector3(0f, 90f, 0f);

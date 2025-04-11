@@ -101,7 +101,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 173cd3f72041c426bb08aff57de2de8b, type: 2}
     - target: {fileID: 919132149155446097, guid: 46563dd974be74059901fab56aa0f228, type: 3}
       propertyPath: m_Name
-      value: CS 4483 EMP Drone Final
+      value: EMP Drone Prefab
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 46563dd974be74059901fab56aa0f228, type: 3}
       propertyPath: m_IsActive
@@ -310,6 +310,8 @@ MonoBehaviour:
   shouldLookAtPlayer: 1
   moveSpeed: 4
   spawnDistance: 10
+  lookAtRotationOffset: {x: 0, y: 90, z: 0}
+  deathVFX: {fileID: 6033075396151361349, guid: 2f7b71448fbf8414b86b4efedd01b193, type: 3}
 --- !u!114 &4346923358690834065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +332,8 @@ MonoBehaviour:
   shouldLookAtPlayer: 1
   moveSpeed: 4
   spawnDistance: 10
+  lookAtRotationOffset: {x: 0, y: 90, z: 0}
+  deathVFX: {fileID: 0}
   fireRate: 3
   empDuration: 3
   laserLine: {fileID: 8744222094616053776}

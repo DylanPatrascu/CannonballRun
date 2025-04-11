@@ -21,6 +21,8 @@ public class EnemyRam : Enemy
         base.Start();
         shouldLookAtPlayer = false; // Since this drone only cares about driving
         splineLength = spline.CalculateLength();
+        moveSpeed = DifficultyScaler.GetRamSpeed();
+        Debug.Log($"[EnemyRam] Speed set to {moveSpeed} at depth {DifficultyScaler.GetDepth()}");
 
     }
 

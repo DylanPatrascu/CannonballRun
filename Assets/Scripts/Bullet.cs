@@ -21,6 +21,7 @@ public class Bullet : MonoBehaviour
     #region Methods
 
     #region Unity Callbacks
+    [SerializeField] private float damage = 50f;
 
     private void Start()
     {
@@ -42,12 +43,21 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        Debug.Log("Print");
-        if (destroyed == false)
+        Debug.Log("Bullet hit: " + col.collider.name);
+
+        if (destroyed) return;
+
+        Enemy enemy = col.collider.GetComponentInParent<Enemy>();
+        if (enemy != null)
         {
-            Destroy(gameObject);
+            enemy.TakeDamage(damage);
+            Debug.Log("Dealt " + damage + " damage to: " + enemy.name);
         }
+
+        destroyed = true;
+        Destroy(gameObject);
     }
+
 
     #endregion
 

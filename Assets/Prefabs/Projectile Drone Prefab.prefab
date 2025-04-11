@@ -308,6 +308,7 @@ MonoBehaviour:
   moveSpeed: 5
   spawnDistance: 50
   lookAtRotationOffset: {x: 0, y: 90, z: 0}
+  deathVFX: {fileID: 6033075396151361349, guid: 2f7b71448fbf8414b86b4efedd01b193, type: 3}
   projectilePrefab: {fileID: 5873092628156777891}
   firePoint: {fileID: 1278435296097687446}
   projectileSpeed: 50
@@ -333,6 +334,7 @@ MonoBehaviour:
   moveSpeed: 4
   spawnDistance: 10
   lookAtRotationOffset: {x: 0, y: 90, z: 0}
+  deathVFX: {fileID: 0}
 --- !u!4 &1765899576611319454 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: de667be1d7b824f4a8cc6eb8496b1df4, type: 3}

@@ -23,6 +23,9 @@ public class EnemyDrone : Enemy
                 player = playerObject.transform;
             }
         }
+        damage = DifficultyScaler.GetProjectileDamage(); // Assuming there's a 'damage' field
+        Debug.Log($"[EnemyDrone] Damage set to {damage} at depth {DifficultyScaler.GetDepth()}");
+
     }
 
     protected override void Update()

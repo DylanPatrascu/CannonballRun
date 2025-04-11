@@ -13,6 +13,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float moveSpeed = 4f;
     [SerializeField] public float spawnDistance = 10f;
     [SerializeField] private Vector3 lookAtRotationOffset = new Vector3(0f, 90f, 0f);
+    [SerializeField] private GameObject deathVFX;
+
+
 
     protected Vector3 offsetFromPlayer;
 
@@ -66,23 +69,23 @@ public class Enemy : MonoBehaviour
     protected virtual void Die()
     {
         isDead = true;
+
+        if (deathVFX != null)
+        {
+            GameObject fx = Instantiate(deathVFX, transform.position, Quaternion.identity);
+            Destroy(fx, 2f); 
+        }
+
+        StaticData.scrap += scrapReward;
         Debug.Log("Enemy was defeated. Awarding " + scrapReward + " scrap!");
 
         EnemyManager manager = FindFirstObjectByType<EnemyManager>();
-        if (manager != null) {
+        if (manager != null)
             manager.NotifyEnemyDeath(gameObject);
-        }
 
-        EnemyProjectile[] allProjectiles = FindObjectsByType<EnemyProjectile>(FindObjectsSortMode.None);
-        foreach (EnemyProjectile projectile in allProjectiles)
-        {
-            if (projectile != null)
-            {
-                projectile.DestroyProjectile();
-            }
-        }
-        Destroy(gameObject);
+        Destroy(gameObject); // This structure will ensure that the VFX can play before the drone is destroyed
     }
+
 
     public float GetDamage() => damage;
     public float GetAttackSpeed() => attackSpeed;

@@ -119,6 +119,7 @@ MonoBehaviour:
   moveSpeed: 30
   spawnDistance: 10
   lookAtRotationOffset: {x: 0, y: 90, z: 0}
+  deathVFX: {fileID: 6033075396151361349, guid: 2f7b71448fbf8414b86b4efedd01b193, type: 3}
 --- !u!114 &2637389067399423579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +141,7 @@ MonoBehaviour:
   moveSpeed: 300
   spawnDistance: 10
   lookAtRotationOffset: {x: 0, y: 90, z: 0}
+  deathVFX: {fileID: 0}
   spline: {fileID: 0}
   laneOffset: 20
   rightSide: 1

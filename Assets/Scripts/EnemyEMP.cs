@@ -62,6 +62,11 @@ public class EnemyEMP : Enemy
             pulseMats[i].SetFloat("_PulseSpeed", 1f);
             pulseMats[i].SetFloat("_EmissionIntensity", 1f);
         }
+
+        fireRate = DifficultyScaler.GetEmpCooldown();
+        Debug.Log($"[EnemyEMP] Cooldown set to {fireRate} at depth {DifficultyScaler.GetDepth()}");
+
+
     }
 
     protected override void Update()

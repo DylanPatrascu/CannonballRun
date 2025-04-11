@@ -13,6 +13,16 @@ public class PlayerBullet : MonoBehaviour
             }
 
             Destroy(gameObject);
+            return;
         }
+
+        Enemy enemy = other.GetComponentInParent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(10f);
+            Debug.Log("Hit enemy: " + enemy.name);
+            Destroy(gameObject);
+        }
+
     }
 }

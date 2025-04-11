@@ -16,27 +16,31 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject ramDronePrefab;
     [SerializeField] private SplineContainer roadSpline;
     [SerializeField] private Transform player;
-    [SerializeField] private int maxEnemies = 4;
     [SerializeField] private float spawnDistance = 10f;
     [SerializeField] private float minHeight = 2f;
     [SerializeField] private float maxHeight = 6f;
     [SerializeField] private float horizontalSpacing = 4f;
     [SerializeField] private float ramLaneOffset = 10f;
+    private float spawnCooldown = 15f;
+    private float spawnTimer = 0f;
+
     
 
     private List<GameObject> activeEnemies = new List<GameObject>();
 
     private void Start() {
         SpawnInitialEnemies();
-        if (spawnRamDrone) SpawnRamDrone(); // For testing
     }
 
     private void Update() {
         CleanupDeadEnemies();
 
-        if (activeEnemies.Count < maxEnemies) {
+        spawnTimer += Time.deltaTime;
+
+        if (activeEnemies.Count < DifficultyScaler.GetEnemyCount() && spawnTimer >= spawnCooldown) {
 
             SpawnEnemy();
+            spawnTimer = 0f;
         }
     }
 
@@ -44,12 +48,14 @@ public class EnemyManager : MonoBehaviour
 
 
     private void SpawnInitialEnemies() {
-        for (int i = 0; i < maxEnemies; i++) {
+        int enemyLimit = DifficultyScaler.GetEnemyCount();
+        Debug.Log($"[EnemyManager] Initial spawn limit at depth {DifficultyScaler.GetDepth()}: {enemyLimit}");
 
+        for (int i = 0; i < enemyLimit; i++) {
             SpawnEnemy();
-            
         }
     }
+
 
     private void SpawnEnemy() {
         if (player == null) return;
@@ -59,10 +65,12 @@ public class EnemyManager : MonoBehaviour
 
         GameObject prefabToSpawn = null;
 
-        if (spawnEmpDrone && !HasEmpDrone() && empDronePrefab != null) {
+        if (spawnEmpDrone && DifficultyScaler.ShouldAllowEMP() && !HasEmpDrone() && empDronePrefab != null) {
             prefabToSpawn = empDronePrefab;
-        } else if (spawnProjectileDrones && projectileDronePrefabs.Length > 0) {
+        } else if (spawnProjectileDrones && DifficultyScaler.ShouldAllowProjectile() && projectileDronePrefabs.Length > 0) {
             prefabToSpawn = projectileDronePrefabs[UnityEngine.Random.Range(0, projectileDronePrefabs.Length)];
+        } else if (spawnRamDrone && DifficultyScaler.ShouldAllowRam() && ramDronePrefab != null) {
+            prefabToSpawn = ramDronePrefab;
         }
 
         if (prefabToSpawn == null) return;
@@ -71,6 +79,12 @@ public class EnemyManager : MonoBehaviour
         Vector3 spawnPos = player.position + (player.forward * spawnDistance) + player.right * offset.x + Vector3.up * offset.y;
 
         GameObject enemy = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
+
+        // This debug log will tell what enemy was spawned and what difficulty level it is at
+        string enemyType = enemy.GetComponent<Enemy>()?.GetType().Name ?? "Unknown";
+        int depth = DifficultyScaler.GetDepth();
+        Debug.Log($"[EnemyManager] Spawned: {enemyType} at depth {depth}");
+
         Enemy enemyScript = enemy.GetComponent<Enemy>();
         if (enemyScript != null) {
             enemyScript.name = $"Enemy_{slotIndex}";
@@ -85,7 +99,7 @@ public class EnemyManager : MonoBehaviour
 
 
     private int GetAvailableSlot() {
-        for (int i = 0; i < maxEnemies; i++) {
+        for (int i = 0; i < DifficultyScaler.GetEnemyCount(); i++) {
 
             bool slotTaken = activeEnemies.Exists(e => e != null && e.name == $"Enemy_{i}");
             if (!slotTaken) return i;

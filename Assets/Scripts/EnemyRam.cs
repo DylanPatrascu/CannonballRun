@@ -31,7 +31,7 @@ public class EnemyRam : Enemy
         if (splineSampler == null || isDead) return;
         base.Update();
 
-        // Move toward the start of the spline
+        // This moves toward the start of the spline
         t -= (moveSpeed * Time.deltaTime) / splineLength;
 
         if (t < 0f)
@@ -40,17 +40,17 @@ public class EnemyRam : Enemy
             return;
         }
 
-        // Sample the left and right edges of the road
+        // This will sample the left and right edges of the road
         Vector3 p1, p2;
         splineSampler.SampleSplineWidth(t, roadWidth, out p1, out p2);
 
-        // Blend toward center to keep drone closer to middle
+        // This will blend toward center to keep drone closer to middle
         Vector3 center = (p1 + p2) / 2f;
         Vector3 rawTarget = rightSide ? p1 : p2;
         Vector3 targetPos = Vector3.Lerp(rawTarget, center, 0.7f); // 0.7 = how close to center
         transform.position = targetPos;
 
-        // Look ahead slightly for smoother rotation
+        // This will look ahead slightly for smoother rotation
         float futureT = Mathf.Clamp01(t - 0.01f);
         Vector3 fwd_p1, fwd_p2;
         splineSampler.SampleSplineWidth(futureT, roadWidth, out fwd_p1, out fwd_p2);

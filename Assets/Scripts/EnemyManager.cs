@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine.Splines;
 using Unity.Mathematics;
 using UnityEngine;
@@ -17,8 +18,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private SplineContainer roadSpline;
     [SerializeField] private Transform player;
     [SerializeField] private float spawnDistance = 10f;
-    [SerializeField] private float minHeight = 2f;
-    [SerializeField] private float maxHeight = 6f;
+    [SerializeField] private float minHeight = 0f;
+    [SerializeField] private float maxHeight = 1f;
     [SerializeField] private float horizontalSpacing = 4f;
     [SerializeField] private float ramLaneOffset = 10f;
     private float spawnCooldown = 15f;
@@ -29,8 +30,24 @@ public class EnemyManager : MonoBehaviour
     private List<GameObject> activeEnemies = new List<GameObject>();
 
     private void Start() {
-        SpawnInitialEnemies();
+        StartCoroutine(DelayedStart());
     }
+
+    private IEnumerator DelayedStart() {
+        yield return new WaitUntil(() => roadSpline.Splines.Count > 0);
+
+        yield return null;
+        yield return null;
+
+        SpawnInitialEnemies();
+
+        if (DifficultyScaler.GetDepth() >= 2 && spawnRamDrone) {
+            yield return new WaitForSeconds(5f);
+            SpawnRamDrone();
+            Debug.Log("[EnemyManager] Forced Ram Drone spawn due to depth ≥ 2");
+        }
+    }
+
 
     private void Update() {
         CleanupDeadEnemies();
@@ -159,11 +176,8 @@ public class EnemyManager : MonoBehaviour
         EnemyRam script = drone.GetComponent<EnemyRam>();
         if (script != null)
         {
-            script.spline = roadSpline;
-            script.splineSampler = sampler;
-            script.roadWidth = ramLaneOffset * 2f;
-            script.rightSide = rightSide;
-            script.t = t;
+            script.Initialize(roadSpline, sampler, ramLaneOffset * 2f, rightSide, t);
+            Debug.Log("[EnemyManager] Called script.Initialize(...)");
         }
     }
 

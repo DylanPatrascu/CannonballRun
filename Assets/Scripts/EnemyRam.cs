@@ -19,9 +19,8 @@ public class EnemyRam : Enemy
     protected override void Start()
     {
         base.Start();
+
         shouldLookAtPlayer = false; // Since this drone only cares about driving
-        splineLength = spline.CalculateLength();
-        moveSpeed = DifficultyScaler.GetRamSpeed();
         Debug.Log($"[EnemyRam] Speed set to {moveSpeed} at depth {DifficultyScaler.GetDepth()}");
 
     }
@@ -30,7 +29,9 @@ public class EnemyRam : Enemy
     {
         if (splineSampler == null || isDead) return;
         base.Update();
+        Debug.Log("[EnemyRam] Update running, t = " + t);
 
+        Debug.Log($"[EnemyRam] moveSpeed={moveSpeed}, splineLength={splineLength}");
         // This moves toward the start of the spline
         t -= (moveSpeed * Time.deltaTime) / splineLength;
 
@@ -72,6 +73,28 @@ public class EnemyRam : Enemy
             }
         }
     }
+
+    public void Initialize(SplineContainer spline, SplineSampler sampler, float roadWidth, bool rightSide, float t)
+    {
+        Debug.Log("[EnemyRam] ✅ Initialize was called");
+
+        this.spline = spline;
+        this.splineSampler = sampler;
+        this.roadWidth = roadWidth;
+        this.rightSide = rightSide;
+        this.t = t;
+
+        if (spline == null) {
+            Debug.LogError("[EnemyRam] Initialize called with NULL spline");
+        }
+
+        splineLength = spline.CalculateLength();
+        Debug.Log($"[EnemyRam] Initialized: splineLength={splineLength}, t={t}");
+    }
+
+
+
+
 
     
 }

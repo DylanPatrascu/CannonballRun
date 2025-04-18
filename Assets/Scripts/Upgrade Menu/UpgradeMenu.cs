@@ -47,7 +47,12 @@ public class UpgradeMenu : MonoBehaviour
         HashSet<int> indexList = new HashSet<int>();
         List<UpgradeData> selectedUpgrades = new List<UpgradeData>();
 
-        while (indexList.Count < 3) { indexList.Add(Random.Range(0, upgradeList.Count)); }
+        while (indexList.Count < 3) 
+        { 
+            
+            if (true) indexList.Add(Random.Range(0, upgradeList.Count));
+
+        }
         foreach (int index in indexList) { selectedUpgrades.Add(upgradeList[index]); }
         return selectedUpgrades;
     }

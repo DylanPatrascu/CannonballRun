@@ -48,10 +48,9 @@ public class UpgradeMenu : MonoBehaviour
         List<UpgradeData> selectedUpgrades = new List<UpgradeData>();
 
         while (indexList.Count < 3) 
-        { 
-            
-            if (true) indexList.Add(Random.Range(0, upgradeList.Count));
-
+        {
+            int index = Random.Range(0, upgradeList.Count);
+            if (!StaticData.upgrades.Contains(upgradeList[index])) indexList.Add(index);
         }
         foreach (int index in indexList) { selectedUpgrades.Add(upgradeList[index]); }
         return selectedUpgrades;

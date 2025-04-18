@@ -31,6 +31,8 @@ public class GenerateRoad : MonoBehaviour
         m_distance = Vector3.Distance(m_startPoint.position, m_endPoint.position);
         m_knotDistance = m_distance / m_knots;
         RebuildSpline();
+        TrafficWaypoints wp = GetComponent<TrafficWaypoints>();
+        wp.SetWaypoints();
         SplineRoad sr = GetComponent<SplineRoad>();
         if (sr != null && gameObject.activeInHierarchy) { sr.StartCoroutine(sr.ValidateRebuild()); }
     }

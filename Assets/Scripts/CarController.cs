@@ -1,8 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using Unity.VisualScripting;
 using UnityEngine;
 
 // Tutorial Link: https://www.youtube.com/playlist?list=PLtYhPiKW6dMUdJPfA1HH2HbPjp45PU9Tf

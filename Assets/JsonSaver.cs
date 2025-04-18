@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class JsonSaver : MonoBehaviour
 {

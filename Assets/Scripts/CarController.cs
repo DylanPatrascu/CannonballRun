@@ -17,7 +17,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private float time = 0;
 
     [Header("Suspension Settings")]
-    [SerializeField] private float springStiffness;
+    [SerializeField] public float springStiffness;
     //the lower the damper stiffness, the bouncier the car
     [SerializeField] private float damperStiffness;
     [SerializeField] private float restLength;
@@ -63,6 +63,10 @@ public class CarController : MonoBehaviour
     private void Start()
     {
         carRB = GetComponent<Rigidbody>();
+
+        acceleration += StaticData.speedIncrease;
+        maxSpeed += StaticData.speedIncrease;
+        springStiffness += StaticData.speedIncrease*1000;
     }
 
     private void FixedUpdate()

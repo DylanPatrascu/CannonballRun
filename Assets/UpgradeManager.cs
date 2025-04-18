@@ -14,7 +14,8 @@ public class UpgradeManager : MonoBehaviour
 
     void Start()
     {
-        foreach(UpgradeData upgrade in StaticData.upgrades)
+
+        foreach (UpgradeData upgrade in StaticData.upgrades)
         {
             if (upgrade.upgradeName == "Cowcatcher" && !cowcatcher2.activeSelf && !cowcatcher3.activeSelf)
             {
@@ -52,7 +53,9 @@ public class UpgradeManager : MonoBehaviour
             {
                 car.acceleration += 20;
                 car.maxSpeed += 20;
+                car.springStiffness += 20000;
             }
+
 
             if (upgrade.upgradeName == "Tires")
             {

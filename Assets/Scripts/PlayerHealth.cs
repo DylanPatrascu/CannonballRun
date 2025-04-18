@@ -14,7 +14,6 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        maxHealth += StaticData.healthIncrease;
         currentHealth = maxHealth;
         carDeath = GetComponent<CarDeath>(); //  CarDeath.cs should be on the same object
         onHealthChanged?.Invoke(currentHealth);

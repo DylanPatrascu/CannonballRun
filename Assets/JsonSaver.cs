@@ -112,6 +112,9 @@ public class JsonSaver : MonoBehaviour
 
 
 
+
+
+
     public void LoadData()
     {
         if (File.Exists(filePath))
@@ -119,12 +122,7 @@ public class JsonSaver : MonoBehaviour
             string json = File.ReadAllText(filePath);
             UserData data = JsonUtility.FromJson<UserData>(json);
 
-            StaticData.startingScrap = data.pSScrap;
-            StaticData.speedIncrease = data.pSpeed;
-            StaticData.healthIncrease = data.pHealth;
-            StaticData.parts = data.parts;
-
-            startingScrap.text = data.pSScrap.ToString();
+            parts.text = data.pSScrap.ToString();
             speed.text = data.pSpeed.ToString();
             health.text = data.pHealth.ToString();
             parts.text = "Parts \n" + data.parts.ToString();
@@ -135,11 +133,6 @@ public class JsonSaver : MonoBehaviour
         {
             statusText.text = "No Save File Found!";
         }
-    }
-
-    public void goMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
     }
 
 }

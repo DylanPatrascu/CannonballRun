@@ -68,9 +68,6 @@ public class CarController : MonoBehaviour
     private void Start()
     {
         carRB = GetComponent<Rigidbody>();
-
-        acceleration += StaticData.speedIncrease;
-        maxSpeed += StaticData.speedIncrease;
     }
 
     private void FixedUpdate()

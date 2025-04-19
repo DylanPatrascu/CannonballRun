@@ -64,7 +64,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Porsche 911
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3225874551983908691, guid: aab421362f293dd4db2871de5c8029c4, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2746152623526535530, guid: aab421362f293dd4db2871de5c8029c4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -74,6 +79,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3225874551983908691, guid: aab421362f293dd4db2871de5c8029c4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5113694011111708662}
+    - targetCorrespondingSourceObject: {fileID: 3225874551983908691, guid: aab421362f293dd4db2871de5c8029c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4692057677889904558}
   m_SourcePrefab: {fileID: 100100000, guid: aab421362f293dd4db2871de5c8029c4, type: 3}
 --- !u!1 &5487644038232296083 stripped
 GameObject:
@@ -111,3 +119,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWaypoint: {fileID: 0}
+--- !u!65 &4692057677889904558
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5487644038232296083}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.69, y: 1.15, z: 4.1}
+  m_Center: {x: -0.004298985, y: 0.74, z: 0.0057911873}

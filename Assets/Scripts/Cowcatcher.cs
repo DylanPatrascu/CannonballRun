@@ -14,83 +14,38 @@ public class Cowcatcher : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (level == 1 && other.CompareTag("Enemy"))
+        if (!other.CompareTag("Enemy"))
         {
-            Rigidbody rb = other.GetComponent<Rigidbody>();
-            Debug.Log("Before:" + rb.linearVelocity);
-            rb.AddForce(Vector3.forward * 100000f);
-
-            rb.AddForce(Vector3.up * 100000f);
-
-            if (Random.Range(0f, 1f) < 0.5f)
-            {
-                rb.AddForce(Vector3.right * 5000f);
-            }
-            else
-            {
-                rb.AddForce(Vector3.left * 5000f);
-            }
-            Debug.Log("After:" + rb.linearVelocity);
-
-        }
-        else if (level == 2 && other.CompareTag("Enemy"))
-        {
-
-            Rigidbody rb = other.GetComponent<Rigidbody>();
-            rb.AddForce(Vector3.up * 10000f);
-            if(Random.Range(0f, 1f) < 0.5f)
-            {
-                rb.AddForce(Vector3.right * 10000f);
-            } else
-            {
-                rb.AddForce(Vector3.left * 10000f);
-            }
+            return;
         }
 
-        else if (level == 3 && other.CompareTag("Enemy"))
+        Rigidbody rb = other.GetComponent<Rigidbody>();
+        if (!rb)
         {
-            Destroy(other.gameObject);
-            explode.Play();
+            return;
+        }
 
+        switch (level)
+        {
+            case 1:
+                // Medium push forward and a little upward
+                rb.AddForce(Vector3.forward * 5000f, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * 1000f, ForceMode.Impulse);
+                rb.AddForce(Random.value < 0.5f ? Vector3.right * 500f : Vector3.left * 500f, ForceMode.Impulse);
+                break;
+
+            case 2:
+                // Harder upward and sideways knock
+                rb.AddForce(Vector3.up * 2000f, ForceMode.Impulse);
+                rb.AddForce(Random.value < 0.5f ? Vector3.right * 1500f : Vector3.left * 1500f, ForceMode.Impulse);
+                break;
+
+            case 3:
+                // Destroy enemy + particle effect
+                Destroy(other.gameObject);
+                explode.Play();
+                break;
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-
-        if (level == 1 && other.CompareTag("Enemy"))
-        {
-
-            Rigidbody rb = other.GetComponent<Rigidbody>();
-            Debug.Log("Before:" + rb.linearVelocity);
-            rb.AddForce(Vector3.forward * 100000f);
-
-            rb.AddForce(Vector3.up * 100000f);
-
-            if (Random.Range(0f, 1f) < 0.5f)
-            {
-                rb.AddForce(Vector3.right * 5000f);
-            }
-            else
-            {
-                rb.AddForce(Vector3.left * 5000f);
-            }
-            Debug.Log("After:" + rb.linearVelocity);
-
-        }
-
-        else if (level == 2 && other.CompareTag("Enemy"))
-        {
-            Rigidbody rb = other.GetComponent<Rigidbody>();
-            rb.AddForce(Vector3.up * 1000f);
-            rb.AddForce(Vector3.right * 1000f);
-           
-        }
-        else if (level == 3 && other.CompareTag("Enemy"))
-        {
-            Destroy(other.gameObject);
-            explode.Play();
-
-        }
-    }
 }

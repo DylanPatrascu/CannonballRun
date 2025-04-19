@@ -52,3 +52,4 @@ public class NPCController : MonoBehaviour
         reachedDestination = false;
     }
 }
+ 

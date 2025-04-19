@@ -34,9 +34,15 @@ public class WaypointNavigator : MonoBehaviour
                 currentWaypoint = currentWaypoint.branches[Random.Range(0, currentWaypoint.branches.Count - 1)];
             } 
             
-
-            currentWaypoint = currentWaypoint.nextWaypoint;
-            controller.SetDestination(currentWaypoint.GetPosition());
+            if(currentWaypoint.nextWaypoint != null)
+            {
+                currentWaypoint = currentWaypoint.nextWaypoint;
+                controller.SetDestination(currentWaypoint.GetPosition());
+            } else
+            {
+                Object.Destroy(this.gameObject);
+            }
+            
         }
     }
 }

@@ -62,6 +62,7 @@ public class Buildings : MonoBehaviour
         checkBuildingBounds = TransformBounds(checkBuilding.transform, checkBuildingBounds);
         Bounds roadBounds = m_roadMesh.sharedMesh.bounds;
         roadBounds = TransformBounds(m_roadMesh.transform, roadBounds);
+        
 
         if (roadBounds.Intersects(checkBuildingBounds))
         {
@@ -76,6 +77,7 @@ public class Buildings : MonoBehaviour
                 buildingBounds = TransformBounds(building.transform, buildingBounds);
                 if (checkBuildingBounds.Intersects(buildingBounds))
                 {
+                    Debug.Log("big booms");
                     Destroy(checkBuilding);
                     return false;
                 }

@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 public class MenuButtons : MonoBehaviour
 {
 
+    [SerializeField] List<UpgradeData> startingUpgrades;
+
     public void StartGame()
     {
         StaticData.upgrades = new List<UpgradeData>();
+        foreach (UpgradeData upgrade in startingUpgrades) StaticData.upgrades.Add(upgrade);
         StaticData.areas = new List<string>();
         StaticData.scrap = StaticData.startingScrap;
         StaticData.totalTime = 0;

@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class NPCSpawner : MonoBehaviour
 {
-    public GameObject[] carPrefabs = new GameObject[5];
+    public GameObject[] carPrefabs;
     public int carsPerLane;
     public GameObject[] carLanes = new GameObject[4];
     public GameObject trafficParent; // Parent object for all spawned cars
 
     void Start()
     {
-        StartCoroutine(Spawn());
+        Spawn();
     }
 
-    IEnumerator Spawn()
+    public void Spawn()
     {
         // Loop through each lane
         foreach (GameObject lane in carLanes)
@@ -31,7 +31,7 @@ public class NPCSpawner : MonoBehaviour
             if (carsPerLane > availableWaypoints.Count)
             {
                 Debug.LogWarning($"Not enough waypoints in lane {lane.name} for the requested number of cars.");
-                yield break;
+                break;
             }
 
             while (count < carsPerLane)
@@ -69,7 +69,6 @@ public class NPCSpawner : MonoBehaviour
                 }
 
                 count++;
-                yield return null; // Wait for next frame before spawning the next car
             }
         }
     }

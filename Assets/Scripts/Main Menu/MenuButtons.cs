@@ -9,7 +9,7 @@ public class MenuButtons : MonoBehaviour
     {
         StaticData.upgrades = new List<UpgradeData>();
         StaticData.areas = new List<string>();
-        StaticData.scrap = 200;
+        StaticData.scrap = StaticData.startingScrap;
         StaticData.totalTime = 0;
         StaticData.timeDrifted = 0;
         StaticData.distanceTraveled = 0;
@@ -20,6 +20,10 @@ public class MenuButtons : MonoBehaviour
         StaticData.alive = true;
         SceneManager.LoadScene("GameScene");
         StaticData.runTime = 0;
+    }
+    public void OpenUpgrades()
+    {
+        SceneManager.LoadScene("UpgradeScene");
     }
 
     public void OpenCollection()

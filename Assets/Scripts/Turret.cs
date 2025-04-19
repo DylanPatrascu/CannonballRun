@@ -1,11 +1,10 @@
+using System.Collections;
 using UnityEngine;
+
+public enum GunState {Idle, Firing, Reloading}
 
 public class Turret : MonoBehaviour
 {
-    #region Datamembers
-
-    #region Editor Settings
-
     [Header("Aim")]
     [SerializeField] private bool aim;
     [SerializeField] private LayerMask groundMask;
@@ -20,6 +19,12 @@ public class Turret : MonoBehaviour
     [Header("Projectile")]
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform prefabSpawn;
+    [SerializeField] private int maxAmmo;
+    [SerializeField] private int currentAmmo;
+    [SerializeField] private GunState gun = GunState.Idle;
+    [SerializeField] private float shootDelay = 0.5f;
+    [SerializeField] private float reloadTime = 2.0f;
+
 
     [Header("Gizmos")]
     [SerializeField] private bool gizmo_cameraRay = false;
@@ -27,22 +32,14 @@ public class Turret : MonoBehaviour
     [SerializeField] private bool gizmo_target = false;
     [SerializeField] private bool gizmo_ignoredHeightTarget = false;
 
-    #endregion
-    #region Private Fields
 
     private Camera mainCamera;
 
-    #endregion
-
-    #endregion
-
-
-    #region Methods
-
-    #region Unity Callbacks
 
     private void Start()
     {
+        gun = GunState.Idle;
+        currentAmmo = maxAmmo;
         mainCamera = Camera.main;
 
         if (laserRenderer != null)
@@ -55,9 +52,19 @@ public class Turret : MonoBehaviour
     {
         Aim();
         RefreshLaser();
-        Shoot();
         ChangeTargetMode();
         GizmoSettings();
+        Debug.Log(currentAmmo);
+        
+        if (Input.GetMouseButtonDown(0) && currentAmmo > 0 && gun == GunState.Idle)
+        {
+            StartCoroutine(Shoot());
+
+        }
+        if (Input.GetKeyDown(KeyCode.R) && gun == GunState.Idle)
+        {
+            StartCoroutine(Reload());
+        }
     }
 
     private void OnDrawGizmos()
@@ -103,8 +110,6 @@ public class Turret : MonoBehaviour
             }
         }
     }
-
-    #endregion
 
     private void Aim()
     {
@@ -157,13 +162,29 @@ public class Turret : MonoBehaviour
         }
     }
 
-private void Shoot()
+    private IEnumerator Shoot()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            var projectile = Instantiate(projectilePrefab, prefabSpawn.position, Quaternion.identity);
-            projectile.transform.forward = aimedTransform.forward;
-        }
+        gun = GunState.Firing;
+
+        var projectile = Instantiate(projectilePrefab, prefabSpawn.position, Quaternion.identity);
+        projectile.transform.forward = aimedTransform.forward;
+        currentAmmo -= 1;
+
+        yield return new WaitForSeconds(shootDelay);
+
+        gun = GunState.Idle;
+    }
+
+    private IEnumerator Reload()
+    {
+
+        gun = GunState.Reloading;
+
+        yield return new WaitForSeconds(reloadTime);
+
+        currentAmmo = maxAmmo;
+        gun = GunState.Idle;
+
     }
 
     private void RefreshLaser()
@@ -218,5 +239,4 @@ private void Shoot()
         }
     }
 
-    #endregion
 }

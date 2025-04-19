@@ -28,11 +28,11 @@ public class RoadEnd : MonoBehaviour
     {
 
         // false = right, true = left
-        if (dir)
+        if (dir && other.gameObject == player)
         {
             StaticData.currentNode = StaticData.currentNode + StaticData.section;
         }
-        else
+        else if(!dir && other.gameObject == player)
         {
             StaticData.currentNode = StaticData.currentNode + StaticData.section + 1;
         }

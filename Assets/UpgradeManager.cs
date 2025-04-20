@@ -10,6 +10,8 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] GameObject turret2;
     [SerializeField] GameObject turret3;
 
+    [SerializeField] GameObject sandevistan;
+
     [SerializeField] CarController car;
 
     void Start()
@@ -47,6 +49,11 @@ public class UpgradeManager : MonoBehaviour
                 turret1.SetActive(false);
                 turret2.SetActive(false);
                 turret3.SetActive(true);
+            }
+
+            if (upgrade.upgradeName == "Sandevistan")
+            {
+                sandevistan.SetActive(true);
             }
 
             if (upgrade.upgradeName == "Engine")

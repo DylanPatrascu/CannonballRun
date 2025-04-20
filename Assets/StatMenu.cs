@@ -6,6 +6,8 @@ public class StatMenu : MonoBehaviour
 {
     public TextMeshProUGUI text;
 
+    [SerializeField] private Transition transition;
+
     void Start()
     {
         StaticData.runTime += StaticData.totalTime;
@@ -15,11 +17,11 @@ public class StatMenu : MonoBehaviour
     {
         if (StaticData.alive)
         {
-            SceneManager.LoadScene(StaticData.nextScene);
+            transition.TransitionScene(StaticData.nextScene);
         }
         else
         {
-            SceneManager.LoadScene("MainMenu");
+            transition.TransitionScene("MainMenu");
         }
     }
 

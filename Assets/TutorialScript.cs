@@ -4,8 +4,10 @@ using UnityEngine.SceneManagement;
 public class TutorialScript : MonoBehaviour
 {
 
+    [SerializeField] private Transition transition;
+
     public void exit()
     {
-        SceneManager.LoadScene("MainMenu");
+        transition.TransitionScene("MainMenu");
     }
 }

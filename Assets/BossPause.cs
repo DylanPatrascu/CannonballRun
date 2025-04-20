@@ -8,6 +8,8 @@ public class BossPause : MonoBehaviour
     [SerializeField]
     private bool isPaused;
 
+    [SerializeField] private Transition transition;
+
     void Start()
     {
         //Hide the UI since the game is not paused by default
@@ -51,6 +53,7 @@ public class BossPause : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1;
+        transition.TransitionScene(sceneName);
     }
 }

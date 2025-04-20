@@ -20,6 +20,8 @@ public class JsonSaver : MonoBehaviour
     public TMP_Text parts;
     public TMP_Text health;
     public TMP_Text startingScrap;
+
+    [SerializeField] private Transition transition;
     
     private string filePath;
 
@@ -141,7 +143,7 @@ public class JsonSaver : MonoBehaviour
 
     public void goMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        transition.TransitionScene("MainMenu");
     }
 
 

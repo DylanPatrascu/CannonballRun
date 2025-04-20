@@ -6,6 +6,7 @@ public class MenuButtons : MonoBehaviour
 {
 
     [SerializeField] List<UpgradeData> startingUpgrades;
+    [SerializeField] Transition transition;
 
     public void StartGame()
     {
@@ -21,17 +22,18 @@ public class MenuButtons : MonoBehaviour
         StaticData.currentNode = 0;
         StaticData.treeGen = false;
         StaticData.alive = true;
-        SceneManager.LoadScene("GameScene");
         StaticData.runTime = 0;
+        transition.TransitionScene("GameScene");
+        
     }
     public void OpenUpgrades()
     {
-        SceneManager.LoadScene("UpgradeScene");
+        transition.TransitionScene("UpgradeScene");
     }
 
     public void OpenTutorial()
     {
-        SceneManager.LoadScene("TutorialScene");
+        transition.TransitionScene("TutorialScene");
     }
 
     public void OpenSettings()

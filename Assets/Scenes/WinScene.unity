@@ -129,8 +129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 193799934}
   - component: {fileID: 193799933}
-  - component: {fileID: 193799932}
-  - component: {fileID: 193799931}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -138,25 +136,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!170 &193799931
-AudioDistortionFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 193799930}
-  m_Enabled: 1
-  m_DistortionLevel: 0.75
---- !u!165 &193799932
-AudioHighPassFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 193799930}
-  m_Enabled: 1
-  m_CutoffFrequency: 1234
-  m_HighpassResonanceQ: 1
 --- !u!82 &193799933
 AudioSource:
   m_ObjectHideFlags: 0

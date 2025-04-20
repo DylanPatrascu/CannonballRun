@@ -11,6 +11,8 @@ public class PauseScript : MonoBehaviour
     [SerializeField]
     private bool isPaused;
 
+    [SerializeField] Transition transition;
+
     void Start()
     {
         //Hide the UI since the game is not paused by default
@@ -55,7 +57,8 @@ public class PauseScript : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1;
+        transition.TransitionScene(sceneName);
     }
 
     public void flipCar()
@@ -65,6 +68,7 @@ public class PauseScript : MonoBehaviour
 
     public void LoadMM()
     {
-        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1;
+        transition.TransitionScene("MainMenu");
     }
 }

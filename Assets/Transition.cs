@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,8 +18,9 @@ public class Transition : MonoBehaviour
 
     private IEnumerator ExecuteTransition(string scene)
     {
+        Debug.Log("transition");
         transition.Play("Exit");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSecondsRealtime(1f);
         SceneManager.LoadScene(scene);
     }
 

@@ -27,6 +27,8 @@ public class UpgradeMenu : MonoBehaviour
     public Image upgradeIcon;
     [Range(0, 2)] public float menuSwapTime;
 
+    [SerializeField] private Transition transition;
+
     private enum Direction
     {
         up, down
@@ -80,14 +82,14 @@ public class UpgradeMenu : MonoBehaviour
         {
             StaticData.scrap -= selectedUpgrades[button].cost;
             AddUpgrade(selectedUpgrades[button]);
-            SceneManager.LoadScene("AfterGarage");
+            transition.TransitionScene("AfterGarage");
         }
         
     }
 
     public void SkipShop()
     {
-        SceneManager.LoadScene("AfterGarage");
+        transition.TransitionScene("AfterGarage");
     }
 
     public void ButtonSelected(int button)

@@ -24,6 +24,8 @@ public class chatScript : MonoBehaviour
     public TMP_Text scrap;
     public TMP_Text parts;
 
+    [SerializeField] private Transition transition;
+
     private Vector3 pos1;
     private Vector3 pos2;
     private Vector3 add = new Vector3(0, 30, 0);
@@ -108,7 +110,7 @@ public class chatScript : MonoBehaviour
         }
         if (step == 2)
         {
-            SceneManager.LoadScene("AfterGarage");
+            transition.TransitionScene("AfterGarage");
         }
 
         step++;
@@ -137,7 +139,7 @@ public class chatScript : MonoBehaviour
         }
         if (step == 2)
         {
-            SceneManager.LoadScene("AfterGarage");
+            transition.TransitionScene("AfterGarage");
         }
 
         step++;

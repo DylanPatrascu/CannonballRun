@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class BossHealth : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 100f;
+    [SerializeField] Transition transition;
+    private bool transitioning = false;
+
     private float currentHealth;
     private bool isDead = false;
 
@@ -34,7 +37,8 @@ public class BossHealth : MonoBehaviour
         {
             timer += Time.fixedDeltaTime;
             if (timer > 1){
-                SceneManager.LoadScene("WinScene");
+                if (!transitioning) transition.TransitionScene("WinScene");
+                transitioning = true;
             }
         }
     }

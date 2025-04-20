@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class RoadEnd : MonoBehaviour
 {
+    [SerializeField] Transition transition;
 
     public enum areas
     {
@@ -58,6 +59,6 @@ public class RoadEnd : MonoBehaviour
 
     public void UpdateScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        transition.TransitionScene(sceneName);
     }
 }

@@ -62,7 +62,6 @@ public class Turret : MonoBehaviour
         RefreshLaser();
         ChangeTargetMode();
         GizmoSettings();
-        Debug.Log(currentAmmo);
         
         if (Input.GetMouseButtonDown(0) && currentAmmo > 0 && gun == GunState.Idle)
         {

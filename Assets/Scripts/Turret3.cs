@@ -33,9 +33,15 @@ public class Turret3 : MonoBehaviour
     [SerializeField] private bool gizmo_target = false;
     [SerializeField] private bool gizmo_ignoredHeightTarget = false;
 
+    [SerializeField] private AudioSource gunshot;
+    [SerializeField] private AudioSource reload;
 
     private Camera mainCamera;
 
+    public GunState GetGunState()
+    {
+        return gun;
+    }
     private void Start()
     {
         gun = GunState.Idle;
@@ -65,7 +71,7 @@ public class Turret3 : MonoBehaviour
         ChangeTargetMode();
         GizmoSettings();
 
-        if (Input.GetMouseButtonDown(0) && currentAmmo > 3 && gun == GunState.Idle)
+        if (Input.GetMouseButtonDown(0) && currentAmmo >= 3 && gun == GunState.Idle)
         {
             StartCoroutine(Shoot());
 
@@ -169,6 +175,10 @@ public class Turret3 : MonoBehaviour
     {
         gun = GunState.Firing;
 
+        gunshot.volume = Random.Range(0.7f, 1.0f);
+        gunshot.pitch = Random.Range(0.8f, 1.2f);
+        gunshot.Play();
+
         // First barrel shooting
         var projectile1 = Instantiate(projectilePrefab, prefabSpawn.position, Quaternion.identity);
         projectile1.transform.forward = prefabSpawn.forward;
@@ -192,6 +202,8 @@ public class Turret3 : MonoBehaviour
 
         gun = GunState.Reloading;
 
+        reload.pitch = Random.Range(0.8f, 1.2f);
+        reload.Play();
         yield return new WaitForSeconds(reloadTime);
 
         currentAmmo = maxAmmo;

@@ -7,6 +7,7 @@ public class CarDeath : MonoBehaviour
 
     public Transform location;
     public bool dead = false;
+    public AudioSource explosionSound;
 
     public Canvas deathScreen;
     public Image blackScreen;
@@ -61,6 +62,7 @@ public class CarDeath : MonoBehaviour
             dead = true;
             StaticData.alive = false;
             Debug.Log("Car is dead!");
+            explosionSound.Play(); 
             explode.Play();
 
             if(StaticData.scrap > StaticData.startingScrap)

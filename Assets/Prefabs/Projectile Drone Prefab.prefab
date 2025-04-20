@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7410e6f43db6d754e8af410a4b0cb571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 10
   damage: 1
   attackSpeed: 2
   scrapReward: 10
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2310a5054651704a9c13417bb9ef1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 10
   damage: 1
   attackSpeed: 1
   scrapReward: 10

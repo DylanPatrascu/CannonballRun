@@ -18,7 +18,7 @@ public class StaticData : MonoBehaviour
     public static int speedIncrease = 0;
     public static int healthIncrease = 0;
     public static int startingScrap = 0;
-    public static int parts = 200;
+    public static int parts = 0;
 
     public static bool treeGen = false;
     public static bool alive = true;

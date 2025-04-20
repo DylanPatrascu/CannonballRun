@@ -12,6 +12,7 @@ public class BossHealth : MonoBehaviour
     private float currentHealth;
     private bool isDead = false;
 
+    public AudioSource explosionSound;
     public ParticleSystem explosion;
     private float timer = 0;
 
@@ -76,6 +77,7 @@ public class BossHealth : MonoBehaviour
             isDead = true;
             Debug.Log("Boss is dead");
             explosion.Play();
+            explosionSound.Play();
 
             StaticData.parts += (StaticData.scrap + 100) / 10;
             SaveData();

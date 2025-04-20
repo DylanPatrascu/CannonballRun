@@ -22,6 +22,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float maxHeight = 1f;
     [SerializeField] private float horizontalSpacing = 4f;
     [SerializeField] private float ramLaneOffset = 10f;
+    [SerializeField] private TrafficWaypoints trafficWaypoints;
+
     private float spawnCooldown = 15f;
     private float spawnTimer = 0f;
 
@@ -36,8 +38,6 @@ public class EnemyManager : MonoBehaviour
     private IEnumerator DelayedStart() {
         yield return new WaitUntil(() => roadSpline.Splines.Count > 0);
 
-        yield return null;
-        yield return null;
 
         SpawnInitialEnemies();
 
@@ -145,42 +145,32 @@ public class EnemyManager : MonoBehaviour
 
         }
     }
+    
     private void SpawnRamDrone()
     {
-        if (ramDronePrefab == null || roadSpline == null) return;
+        if (ramDronePrefab == null || trafficWaypoints == null) {
+            Debug.LogError("[EnemyManager] Missing ramDronePrefab or trafficWaypoints reference!");
+            return;
+        }
 
-        float t = 1f; // The end of the spline
-        SplineSampler sampler = FindFirstObjectByType<SplineSampler>();
-        if (sampler == null) return;
+        int laneIndex = UnityEngine.Random.value > 0.5f ? 2 : 4;
+        Transform lane = trafficWaypoints.GetLaneTransform(laneIndex);
 
-        sampler.SampleSplineWidth(t, ramLaneOffset * 2f, out Vector3 p1, out Vector3 p2);
-
-        bool rightSide = UnityEngine.Random.value > 0.5f;
-        Vector3 spawnPos = rightSide ? p1 : p2;
-
-        Vector3 center = (p1 + p2) / 2f;
-        spawnPos = Vector3.Lerp(spawnPos, center, 0.7f);
-
-
-        float heightOffset = 1f;
-        spawnPos.y = Mathf.Min(p1.y, p2.y) - heightOffset;
-
-        roadSpline.Evaluate(0, Mathf.Clamp01(t - 0.01f), out float3 fwd_pos, out float3 forward_f3, out float3 up_f3);
-        Vector3 forward = (Vector3)forward_f3;
-        Vector3 up = (Vector3)up_f3;
-
-        Quaternion spawnRot = Quaternion.LookRotation(forward, up) * Quaternion.Euler(0, 180f, 0f);
-
-        GameObject drone = Instantiate(ramDronePrefab, spawnPos, spawnRot);
-
-        EnemyRam script = drone.GetComponent<EnemyRam>();
-        if (script != null)
+        if (lane == null || lane.childCount == 0)
         {
-            script.Initialize(roadSpline, sampler, ramLaneOffset * 2f, rightSide, t);
-            Debug.Log("[EnemyManager] Called script.Initialize(...)");
+            Debug.LogError($"[EnemyManager] Lane {laneIndex} has no waypoints!");
+            return;
+        }
+
+        Waypoint entryWaypoint = lane.GetChild(lane.childCount - 1).GetComponent<Waypoint>();
+        GameObject drone = Instantiate(ramDronePrefab, entryWaypoint.transform.position, Quaternion.identity);
+
+        EnemyRam ram = drone.GetComponent<EnemyRam>();
+        if (ram != null)
+        {
+            ram.AssignWaypoint(entryWaypoint);
+            Debug.Log("[EnemyManager] Ram Drone spawned using waypoints.");
         }
     }
-
-
 
 }

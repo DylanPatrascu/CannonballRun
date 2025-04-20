@@ -72,4 +72,19 @@ public class TrafficWaypoints : MonoBehaviour
         }
     }
 
+    public Transform GetLaneTransform(int laneIndex)
+    {
+        switch (laneIndex) {
+
+            
+            case 1: return lane1;
+            case 2: return lane2;
+            case 3: return lane3;
+            case 4: return lane4;
+            default:
+                Debug.LogError("[TrafficWaypoints] Invalid lane index.");
+                return null;
+        }
+    }
+
 }

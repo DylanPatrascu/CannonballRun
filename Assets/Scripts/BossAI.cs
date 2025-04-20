@@ -9,6 +9,7 @@ public class BossAI : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
     }
 
     void Update()

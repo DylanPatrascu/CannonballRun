@@ -42,4 +42,10 @@ public class SplineSampler : MonoBehaviour
         position = this.position;
     }
 
+    public void SetSplineIndex(int index)
+    {
+        m_splineIndex = index;
+    }
+
+
 }

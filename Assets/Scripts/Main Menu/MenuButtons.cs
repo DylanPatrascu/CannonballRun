@@ -29,9 +29,9 @@ public class MenuButtons : MonoBehaviour
         SceneManager.LoadScene("UpgradeScene");
     }
 
-    public void OpenCollection()
+    public void OpenTutorial()
     {
-
+        SceneManager.LoadScene("TutorialScene");
     }
 
     public void OpenSettings()

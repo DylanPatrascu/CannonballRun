@@ -92,6 +92,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 83ed08de463d8436daa3e2d487d4b892, type: 3}
       insertIndex: -1
       addedObject: {fileID: 510191391677799257}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 83ed08de463d8436daa3e2d487d4b892, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5870225943661140446}
   m_SourcePrefab: {fileID: 100100000, guid: 83ed08de463d8436daa3e2d487d4b892, type: 3}
 --- !u!1 &5980382250694224147 stripped
 GameObject:
@@ -147,6 +150,7 @@ MonoBehaviour:
   rightSide: 1
   splineSampler: {fileID: 0}
   roadWidth: 10
+  entryWaypoint: {fileID: 0}
   t: 1
 --- !u!65 &3210436850980088896
 BoxCollider:
@@ -196,3 +200,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5870225943661140446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5980382250694224147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06324a55636f64fa298c0765acb78037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWaypoint: {fileID: 0}
+  moveSpeed: 30
+  rotationSpeed: 5
+  stopDistance: 1.5

@@ -32,9 +32,17 @@ public class Turret : MonoBehaviour
     [SerializeField] private bool gizmo_target = false;
     [SerializeField] private bool gizmo_ignoredHeightTarget = false;
 
+    [SerializeField] private AudioSource gunshot;
+    [SerializeField] private AudioSource reload;
+
+
 
     private Camera mainCamera;
 
+    public GunState GetGunState()
+    {
+        return gun;
+    }
 
     private void Start()
     {
@@ -166,6 +174,9 @@ public class Turret : MonoBehaviour
     {
         gun = GunState.Firing;
 
+        gunshot.volume = Random.Range(0.7f, 1.0f);
+        gunshot.pitch = Random.Range(0.8f, 1.2f);
+        gunshot.Play();
         var projectile = Instantiate(projectilePrefab, prefabSpawn.position, Quaternion.identity);
         projectile.transform.forward = aimedTransform.forward;
         currentAmmo -= 1;
@@ -180,6 +191,8 @@ public class Turret : MonoBehaviour
 
         gun = GunState.Reloading;
 
+        reload.pitch = Random.Range(0.8f, 1.2f);
+        reload.Play();
         yield return new WaitForSeconds(reloadTime);
 
         currentAmmo = maxAmmo;
@@ -237,6 +250,16 @@ public class Turret : MonoBehaviour
         {
             gizmo_ignoredHeightTarget = !gizmo_ignoredHeightTarget;
         }
+    }
+
+    public int GetCurrentAmmo()
+    {
+        return currentAmmo;
+    }
+
+    public int GetMaxAmmo()
+    {
+        return maxAmmo;
     }
 
 }

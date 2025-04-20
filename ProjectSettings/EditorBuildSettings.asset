@@ -29,5 +29,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UpgradeScene.unity
     guid: 899180a9ef422ba4da9053b9a60826a5
+  - enabled: 1
+    path: Assets/Scenes/RandomScene.unity
+    guid: 590436c92fe6c5b4d810795f3f501908
+  - enabled: 1
+    path: Assets/Scenes/TutorialScene.unity
+    guid: a211e87f53cffdb4bbdf82459a25adbe
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

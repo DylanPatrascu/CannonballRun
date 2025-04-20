@@ -19,7 +19,7 @@ public static class DifficultyScaler
     }
 
     public static float GetProjectileDamage() {
-        return 10f + GetDepth() * 5f;
+        return 10f + GetDepth() * 2f;
     }
 
     public static bool ShouldAllowRam() => GetDepth() >= 2;

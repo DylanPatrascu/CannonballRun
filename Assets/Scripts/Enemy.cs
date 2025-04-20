@@ -5,7 +5,7 @@ public class Enemy : MonoBehaviour
 {
     [Header("Enemy Stats")]
     [SerializeField] protected float health = 100f;
-    [SerializeField] protected float damage = 10f;
+    [SerializeField] protected float damage = 5f;
     [SerializeField] protected float attackSpeed = 1f;
     [SerializeField] protected int scrapReward = 10;
     [SerializeField] public Transform player;

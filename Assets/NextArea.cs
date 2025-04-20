@@ -9,9 +9,15 @@ public class NextArea : MonoBehaviour
     public RoadEnd leftEnd;
     public RoadEnd rightEnd;
 
+    private int randomInt;
+
 
     void Start()
     {
+        randomInt = Random.Range(1, 100);
+
+        print("Random Node Roll: " + randomInt);
+
         print("C Node = " + StaticData.currentNode);
         print("C Section = " + StaticData.section);
     }
@@ -84,7 +90,18 @@ public class NextArea : MonoBehaviour
         }
         else
         {
-            leftEnd.nextArea = RoadEnd.areas.nextStage;
+            if (randomInt < 10)
+            {
+                leftEnd.nextArea = RoadEnd.areas.nextStage;
+            }
+            else if (randomInt >= 10 && randomInt < 20)
+            {
+                leftEnd.nextArea = RoadEnd.areas.shop;
+            }
+            else
+            {
+                leftEnd.nextArea = RoadEnd.areas.random;
+            }
         }
     }
 
@@ -100,7 +117,19 @@ public class NextArea : MonoBehaviour
         }
         else
         {
-            rightEnd.nextArea = RoadEnd.areas.nextStage;
+
+            if (randomInt < 10)
+            {
+                rightEnd.nextArea = RoadEnd.areas.nextStage;
+            }
+            else if (randomInt >= 10 && randomInt < 20)
+            {
+                rightEnd.nextArea = RoadEnd.areas.shop;
+            }
+            else
+            {
+                rightEnd.nextArea = RoadEnd.areas.random;
+            }
         }
     }
 }

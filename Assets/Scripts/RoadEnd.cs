@@ -10,7 +10,8 @@ public class RoadEnd : MonoBehaviour
         godShop,
         gasStation,
         nextStage,
-        boss
+        boss,
+        random
     };
 
     public GameObject player;
@@ -23,6 +24,7 @@ public class RoadEnd : MonoBehaviour
     public string gasStationScene = "Garage";
     public string nextStageScene = "GameScene";
     public string bossScene = "BossScene";
+    public string randomScene = "RandomScene";
 
     public void OnTriggerEnter(Collider other)
     {
@@ -43,7 +45,7 @@ public class RoadEnd : MonoBehaviour
         if(other.gameObject == player)
         {
             if (nextArea == areas.shop) { StaticData.nextScene = shopScene; }
-            else if (nextArea == areas.godShop) { StaticData.nextScene = godShopScene; }
+            else if (nextArea == areas.random) { StaticData.nextScene = randomScene; }
             else if (nextArea == areas.gasStation) { StaticData.nextScene = gasStationScene; }
             else if (nextArea == areas.nextStage) { StaticData.nextScene = nextStageScene; }
             else if (nextArea == areas.boss) { StaticData.nextScene = bossScene; }

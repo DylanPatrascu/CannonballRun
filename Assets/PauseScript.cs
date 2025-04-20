@@ -1,9 +1,12 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseScript : MonoBehaviour
 {
     public GameObject pauseCanvas;
+    public GameObject car;
+    public TMP_Text scrap;
 
     [SerializeField]
     private bool isPaused;
@@ -16,6 +19,7 @@ public class PauseScript : MonoBehaviour
 
     private void Update()
     {
+        scrap.SetText(StaticData.scrap.ToString());
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -52,6 +56,11 @@ public class PauseScript : MonoBehaviour
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void flipCar()
+    {
+        car.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
     }
 
     public void LoadMM()

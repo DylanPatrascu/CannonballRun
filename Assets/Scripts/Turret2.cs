@@ -257,4 +257,14 @@ public class Turret2 : MonoBehaviour
         }
     }
 
+    public int GetCurrentAmmo()
+    {
+        return currentAmmo;
+    }
+
+    public int GetMaxAmmo()
+    {
+        return maxAmmo;
+    }
+
 }

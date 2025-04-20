@@ -16,6 +16,7 @@ public class chatScript : MonoBehaviour
         public int parts;
     }
     public GameObject head;
+    public AudioSource voice;
 
     public TMP_Text chat;
     public TMP_Text button1;
@@ -39,6 +40,7 @@ public class chatScript : MonoBehaviour
 
         button1.SetText("Who are you?");
         button2.SetText("Why?");
+        voice.Play(); 
         StartCoroutine(animate());
         chat.SetText("You gotta watch out for the police drones out there. But every one knows the scrap you can get from them is worth the risk!!");
     }
@@ -82,6 +84,7 @@ public class chatScript : MonoBehaviour
     {
         if (step == 0)
         {
+            voice.Play();
             StartCoroutine(animate());
             chat.SetText("Im a garage bot I can turn some of your scrap into parts. Parts let you tune your car when you get off these roads. \n\nWant to give me some scrap?");
 
@@ -91,6 +94,7 @@ public class chatScript : MonoBehaviour
         }
         if (step == 1) 
         {
+            voice.Play();
             StartCoroutine(animate());
             chat.SetText("Thanks! Here is some car parts!");
 
@@ -114,6 +118,7 @@ public class chatScript : MonoBehaviour
     {
         if (step == 0)
         {
+            voice.Play();
             StartCoroutine(animate());
             chat.SetText("The government put those drones out to watch for modded vehicles like yours. Don't trust anyone outside these garages they have eyes everywhere. \n\nWant to give me some scrap to turn into parts?");
 
@@ -123,6 +128,7 @@ public class chatScript : MonoBehaviour
         }
         if (step == 1)
         {
+            voice.Play();
             StartCoroutine(animate());
             chat.SetText("Maybe next time then.");
 

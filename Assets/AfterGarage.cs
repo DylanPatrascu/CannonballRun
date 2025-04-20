@@ -8,8 +8,15 @@ public class AfterGarage : MonoBehaviour
     public TextMeshProUGUI leftText;
     public TextMeshProUGUI rightText;
 
+    private int randomInt;
+
     void Start()
     {
+
+        randomInt = Random.Range(1, 100);
+
+        print("Random Node Roll: " + randomInt);
+
         if (StaticData.section != 5)
         {
             leftText.SetText(StaticData.areas[StaticData.currentNode + StaticData.section]);
@@ -48,7 +55,18 @@ public class AfterGarage : MonoBehaviour
         {
             StaticData.currentNode = StaticData.currentNode + StaticData.section;
             StaticData.section += 1;
-            SceneManager.LoadScene("GameScene");
+            if (randomInt < 10)
+            {
+                SceneManager.LoadScene("GameScene");
+            }
+            else if (randomInt >= 10 && randomInt < 20)
+            {
+                SceneManager.LoadScene("Garage");
+            }
+            else
+            {
+                SceneManager.LoadScene("RandomScene");
+            }
         }
     }
     public void goRight()
@@ -74,7 +92,19 @@ public class AfterGarage : MonoBehaviour
         {
             StaticData.currentNode = StaticData.currentNode + StaticData.section + 1;
             StaticData.section += 1;
-            SceneManager.LoadScene("GameScene");
+
+            if (randomInt < 10)
+            {
+                SceneManager.LoadScene("GameScene");
+            }
+            else if (randomInt >= 10 && randomInt < 20)
+            {
+                SceneManager.LoadScene("Garage");
+            }
+            else
+            {
+                SceneManager.LoadScene("RandomScene");
+            }
         }
     }
 

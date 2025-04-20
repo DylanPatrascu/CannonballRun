@@ -24,5 +24,14 @@ public class PlayerBullet : MonoBehaviour
             Destroy(gameObject);
         }
 
+        NPCController npc = other.GetComponentInParent<NPCController>();
+        if (npc != null)
+        {
+            npc.TakeDamage(7);
+            Debug.Log("Dealt " + 7 + " damage to: " + npc.name);
+            Destroy(gameObject);
+
+        }
+
     }
 }

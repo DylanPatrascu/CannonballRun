@@ -54,6 +54,13 @@ public class Bullet : MonoBehaviour
             Debug.Log("Dealt " + damage + " damage to: " + enemy.name);
         }
 
+        NPCController npc = col.collider.GetComponentInParent<NPCController>();
+        if (npc != null)
+        {
+            npc.TakeDamage(10);
+            Debug.Log("Dealt " + damage + " damage to: " + npc.name);
+        }
+
         destroyed = true;
         Destroy(gameObject);
     }

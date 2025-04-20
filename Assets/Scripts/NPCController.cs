@@ -13,7 +13,13 @@ public class NPCController : MonoBehaviour
 
     private Vector3 velocity;     // Tracks the NPC's current velocity
     private Vector3 lastPosition; // Tracks the NPC's last position
+    private int health;
+    private int maxHealth = 30;
 
+    private void Start()
+    {
+        health -= maxHealth;
+    }
     private void Update()
     {
         Vector3 destinationDirection = destination - transform.position;
@@ -50,6 +56,21 @@ public class NPCController : MonoBehaviour
     {
         this.destination = destination;
         reachedDestination = false;
+    }
+
+    public void Die()
+    {
+        StaticData.scrap += 5;
+        Destroy(this.gameObject);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if(health <=0)
+        {
+            Die();
+        }
     }
 }
  

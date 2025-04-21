@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Cowcatcher 2
   m_EditorClassIdentifier: 
   upgradeName: Cowcatcherest
-  description: moo
-  flavour: moo
+  description: You are a monster.
+  flavour: moo moo AHHHH OH MY GOD IT BURNS
   cost: 100
   value: 0
   type: 3

@@ -13,12 +13,15 @@ public class NPCController : MonoBehaviour
 
     private Vector3 velocity;     // Tracks the NPC's current velocity
     private Vector3 lastPosition; // Tracks the NPC's last position
-    private int health;
-    private int maxHealth = 30;
+    public int health;
+    public int maxHealth = 100;
+    private ParticleSystem explosion;
 
     private void Start()
     {
-        health -= maxHealth;
+        health = maxHealth;
+        explosion = GetComponent<ParticleSystem>();
+        explosion.Pause();
     }
     private void Update()
     {
@@ -61,8 +64,22 @@ public class NPCController : MonoBehaviour
     public void Die()
     {
         StaticData.scrap += 5;
-        Destroy(this.gameObject);
+        explosion.Play();
+
+        // Hide all meshes
+        MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer mesh in meshRenderers)
+        {
+            mesh.enabled = false;
+        }
+        BoxCollider collider = GetComponent<BoxCollider>();
+        collider.enabled = false;
+
+        // Wait for full explosion time before destroying
+        float totalLifetime = explosion.main.duration + explosion.main.startLifetime.constantMax;
+        Destroy(gameObject, totalLifetime);
     }
+
 
     public void TakeDamage(int damage)
     {

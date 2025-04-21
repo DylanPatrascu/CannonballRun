@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Cowcatcher 1
   m_EditorClassIdentifier: 
   upgradeName: Cowcatcherer
-  description: moo
-  flavour: moo
+  description: Perfect for passive aggressivly nudging traffic out of the way.
+  flavour: moo moo
   cost: 75
   value: 0
   type: 3

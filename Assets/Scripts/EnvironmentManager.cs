@@ -43,8 +43,8 @@ public class EnvironmentManager : MonoBehaviour
 
             for (int s = -1; s <= 1; s += 2)
             {
-                Vector3 rawPos = (s == 1) ? p1 : p2;
-                Vector3 spawnPos = Vector3.Lerp(rawPos, center, 0.5f);
+                
+                Vector3 spawnPos = (s == 1) ? p1 : p2;
 
                 float futureT = Mathf.Clamp01(t + 0.01f);
                 Vector3 fwd_p1, fwd_p2;

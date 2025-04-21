@@ -26,8 +26,6 @@ public class TimeManager : MonoBehaviour
         {
             meshRenderers = GetComponentsInChildren<MeshRenderer>();
         }
-
-
     }
 
     private void Update()
@@ -138,6 +136,7 @@ public class TimeManager : MonoBehaviour
 
     private void HandleSlowMoToggle()
     {
+
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (slowmo)

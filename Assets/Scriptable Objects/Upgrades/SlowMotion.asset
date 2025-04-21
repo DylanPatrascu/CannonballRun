@@ -17,5 +17,5 @@ MonoBehaviour:
   flavour: It definitely ain't legal, but whatev.
   cost: 20
   value: 10
-  type: 3
+  type: 4
   icon: {fileID: 2800000, guid: 6f020a90b103a7646b410e8dc0fef9c9, type: 3}

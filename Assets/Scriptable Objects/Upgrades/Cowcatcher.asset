@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Cowcatcher
   m_EditorClassIdentifier: 
   upgradeName: Cowcatcher
-  description: moo
+  description: Perfect for politely nudging traffic out of the way.
   flavour: moo
   cost: 50
   value: 0
-  type: 2
+  type: 3
   icon: {fileID: 2800000, guid: 8a8ea56257d6fc74db11ca7d95d4bc64, type: 3}

@@ -6,7 +6,8 @@ public class UpgradeData : ScriptableObject
     public enum types {
         speed,
         handling,
-        weapon,
+        gun,
+        cowCatcher,
         tech
     };
 

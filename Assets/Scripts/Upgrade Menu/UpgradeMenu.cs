@@ -8,15 +8,26 @@ using System.Collections;
 
 public class UpgradeMenu : MonoBehaviour
 {
+    [Header("Cameras")]
     public CinemachineCamera mainCam;
     public CinemachineCamera engineCam;
     public CinemachineCamera handlingCam;
-    public CinemachineCamera weaponCam;
+    public CinemachineCamera gunCam;
+    public CinemachineCamera cowCam;
     public CinemachineCamera techCam;
 
+    [Header("Upgrades")]
     public List<UpgradeData> upgradeList;
     private List<UpgradeData> selectedUpgrades;
+    public GameObject turret1;
+    public GameObject turret2;
+    public GameObject turret3;
+    public GameObject cow1;
+    public GameObject cow2;
+    public GameObject cow3;
+    public GameObject sandevistan;
 
+    [Header("UI Elements")]
     public List<Button> buttons;
     public Image descriptionBox;
     public TMP_Text scrapText;
@@ -98,17 +109,34 @@ public class UpgradeMenu : MonoBehaviour
         mainCam.gameObject.SetActive(false);
         engineCam.gameObject.SetActive(false);
         handlingCam.gameObject.SetActive(false);
-        weaponCam.gameObject.SetActive(false);
+        gunCam.gameObject.SetActive(false);
+        cowCam.gameObject.SetActive(false);
         techCam.gameObject.SetActive(false);
 
         if (selectedUpgrades[button].type == UpgradeData.types.handling) { handlingCam.gameObject.SetActive(true); }
         else if (selectedUpgrades[button].type == UpgradeData.types.tech) { techCam.gameObject.SetActive(true); }
-        else if (selectedUpgrades[button].type == UpgradeData.types.weapon) { weaponCam.gameObject.SetActive(true); }
+        else if (selectedUpgrades[button].type == UpgradeData.types.gun) { gunCam.gameObject.SetActive(true); }
+        else if (selectedUpgrades[button].type == UpgradeData.types.cowCatcher) { cowCam.gameObject.SetActive(true); }
         else if (selectedUpgrades[button].type == UpgradeData.types.speed) { engineCam.gameObject.SetActive(true); }
+
+        turret1.SetActive(false);
+        turret2.SetActive(false);
+        turret3.SetActive(false);
+        cow1.SetActive(false);
+        cow2.SetActive(false);
+        cow3.SetActive(false);
+        sandevistan.SetActive(false);
+
+        if (selectedUpgrades[button].upgradeName == "Cool Gun") { turret1.SetActive(true); }
+        else if (selectedUpgrades[button].upgradeName == "Cooler Gun") { turret2.SetActive(true); }
+        else if (selectedUpgrades[button].upgradeName == "Coolest Gun") { turret3.SetActive(true); }
+        else if (selectedUpgrades[button].upgradeName == "Cowcatcher") { cow1.SetActive(true); }
+        else if (selectedUpgrades[button].upgradeName == "Cowcatcherer") { cow2.SetActive(true); }
+        else if (selectedUpgrades[button].upgradeName == "Cowcatcherest") { cow3.SetActive(true); }
+        else if (selectedUpgrades[button].upgradeName == "Sandevistan") { sandevistan.SetActive(true); }
 
         if (running != null) { StopCoroutine(running); }
         StartCoroutine(SwapDescription(menuSwapTime, 540, -540, selectedUpgrades[button]));
-
 
     }
 

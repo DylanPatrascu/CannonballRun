@@ -14,8 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float spawnDistance = 10f;
     [SerializeField] private Vector3 lookAtRotationOffset = new Vector3(0f, 90f, 0f);
     [SerializeField] private GameObject deathVFX;
-
-
+    private ParticleSystem explosion;
 
     protected Vector3 offsetFromPlayer;
 
@@ -27,6 +26,8 @@ public class Enemy : MonoBehaviour
         offsetFromPlayer = offset;
     }
     protected virtual void Start() {
+        explosion = GetComponent<ParticleSystem>();
+        explosion.Pause();
         if (player == null) {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
             if (playerObj != null) {
@@ -69,13 +70,6 @@ public class Enemy : MonoBehaviour
     protected virtual void Die()
     {
         isDead = true;
-
-        if (deathVFX != null)
-        {
-            GameObject fx = Instantiate(deathVFX, transform.position, Quaternion.identity);
-            Destroy(fx, 2f); 
-        }
-
         StaticData.scrap += scrapReward;
         Debug.Log("Enemy was defeated. Awarding " + scrapReward + " scrap!");
 
@@ -83,7 +77,20 @@ public class Enemy : MonoBehaviour
         if (manager != null)
             manager.NotifyEnemyDeath(gameObject);
 
-        Destroy(gameObject); // This structure will ensure that the VFX can play before the drone is destroyed
+        explosion.Play();
+
+        // Hide all meshes
+        MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer mesh in meshRenderers)
+        {
+            mesh.enabled = false;
+        }
+
+        // Wait for full explosion time before destroying
+        float totalLifetime = explosion.main.duration + .5f;
+        Destroy(gameObject, totalLifetime);
+
+
     }
 
 

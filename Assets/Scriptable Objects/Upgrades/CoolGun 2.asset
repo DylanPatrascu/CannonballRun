@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: CoolGun 2
   m_EditorClassIdentifier: 
   upgradeName: Coolest Gun
-  description: This gun is PRETTY cool.
-  flavour: It's not safe to leave home without one.
+  description: This gun is ABSOLUTELY INSANE.
+  flavour: This is an unreleased prototype that we stole from a secret government
+    base called Area 51. Don't ask how we got this...
   cost: 100
   value: 100
   type: 2

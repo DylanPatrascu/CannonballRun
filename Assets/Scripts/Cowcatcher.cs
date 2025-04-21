@@ -4,11 +4,11 @@ using UnityEngine;
 public class Cowcatcher : MonoBehaviour
 {
     [SerializeField][RangeAttribute(1, 3)] private int level = 1;
-    public ParticleSystem explode;
+    //public ParticleSystem explode;
 
     private void Start()
     {
-        explode.Pause();
+        //explode.Pause();
 
     }
 
@@ -19,16 +19,22 @@ public class Cowcatcher : MonoBehaviour
             return;
         }
 
-        Rigidbody rb = other.GetComponent<Rigidbody>();
+        Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
         if (!rb)
         {
+            Debug.Log("NO RB");
+
             return;
         }
-        NPCController npc = other.GetComponent<NPCController>();
+        Debug.Log(rb);
+
+        NPCController npc = other.gameObject.GetComponent<NPCController>();
         if (!npc)
         {
+            Debug.Log("NO NPC");
             return;
         }
+        Debug.Log(npc);
 
         switch (level)
         {
@@ -44,13 +50,13 @@ public class Cowcatcher : MonoBehaviour
                 // Harder upward and sideways knock
                 npc.TakeDamage(15);
                 rb.AddForce(Vector3.up * 2000f, ForceMode.Impulse);
-                rb.AddForce(Random.value < 0.5f ? Vector3.right * 1500f : Vector3.left * 1500f, ForceMode.Impulse);
+                rb.AddForce(Random.value < 0.5f ? Vector3.right * 3000f : Vector3.left * 3000f, ForceMode.Impulse);
                 break;
 
             case 3:
                 // Destroy enemy + particle effect
                 npc.Die();
-                explode.Play();
+                //explode.Play();
                 break;
         }
     }

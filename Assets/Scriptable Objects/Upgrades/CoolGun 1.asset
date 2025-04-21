@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: CoolGun 1
   m_EditorClassIdentifier: 
   upgradeName: Cooler Gun
-  description: This gun is PRETTY cool.
-  flavour: It's not safe to leave home without one.
+  description: This gun is EVEN COOLER.
+  flavour: This is the state of the art model of blaster on the market right now.
+    Shoot first, ask questions later.
   cost: 75
   value: 100
   type: 2

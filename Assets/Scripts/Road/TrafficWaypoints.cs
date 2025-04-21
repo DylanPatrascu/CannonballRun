@@ -56,11 +56,11 @@ public class TrafficWaypoints : MonoBehaviour
         }
 
         float t;
-        Debug.Log("Here");
+        //Debug.Log("Here");
         for (int i = 0; i < lane1Waypoints.Count; i++)
         {
             t = (i + 1f) / ((float)lane1Waypoints.Count + 1f);
-            Debug.Log(t);
+            //Debug.Log(t);
             sampler.SampleSplineWidth(t, innerLaneDistace, out p1, out p2);
             lane1Waypoints[i].transform.position = p1;
             sampler.SampleSplineWidth(1 - t, innerLaneDistace, out p1, out p2);
